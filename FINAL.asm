@@ -1,0 +1,453 @@
+**********************************
+*        CAJA REGISTRADORA		 *
+**********************************
+PACTL  EQU   $1026
+PACNT  EQU   $1027
+ADCTL  EQU   $1030
+ADR1   EQU   $1031
+ADR2   EQU   $1032
+ADR3   EQU   $1033
+ADR4   EQU   $1034
+OPTION EQU   $1039
+
+PORTA  EQU   $1000
+PORTD  EQU   $1008
+PORTE  EQU   $100A
+PORTG  EQU   $1002
+
+DDRA   EQU   $1001
+DDRD   EQU   $1009
+DDRG   EQU   $1003
+
+TMSK2  EQU   $1024
+TFLG2  EQU   $1025
+
+SCDR   EQU   $102F
+SCCR2  EQU   $102D
+SCSR   EQU   $102E
+SCCR1  EQU   $102C
+BAUD   EQU   $102B
+HPRIO  EQU   $103C
+SPCR   EQU   $1028
+CSCTL  EQU   $105D
+OPT2   EQU   $1038
+
+DIR_BASE EQU  $0050
+
+***********************************
+*     DECLARACION DE VARIABLES    *
+***********************************
+ORDEN  EQU   $0000	*variable que almacena lo que recibe el puerto serial
+VAR    EQU   $0001
+
+DECA   EQU   $0004	*descuento unitario en A
+A      EQU   $0008	*cantidad de artículos acumulados de A
+AU     EQU   $000C     	*de A1 a A5 son para representar el subtotal en BCD (decenas, centenas, etc)
+AD     EQU   $000D
+AC     EQU   $000E
+AUM    EQU   $000F
+ADM    EQU   $0010
+ACM    EQU   $0011
+AUMI   EQU   $0012
+ADMI   EQU   $001F
+			
+DECB   EQU   $0014	*la eplicación de las variables A es la misma para los otros 4 artículos
+B      EQU   $0017
+B1     EQU   $001B
+B2     EQU   $001C
+B3     EQU   $001D
+B4     EQU   $001E
+B5     EQU   $001F
+
+DECC   EQU   $0024
+C      EQU   $0027
+C1     EQU   $002B
+C2     EQU   $002C
+C3     EQU   $002D
+C4     EQU   $002E
+C5     EQU   $002F
+
+DECD   EQU   $0034
+D      EQU   $0037
+D1     EQU   $003B
+D2     EQU   $003C
+D3     EQU   $003D
+D4     EQU   $003E
+D5     EQU   $003F
+
+DECE   EQU   $0044
+E      EQU   $0047
+E1     EQU   $004B
+E2     EQU   $004C
+E3     EQU   $004D
+E4     EQU   $004E
+E5     EQU   $004F
+
+DECF   EQU   $0054
+F      EQU   $0057
+F1     EQU   $005B
+F2     EQU   $005C
+F3     EQU   $005D
+F4     EQU   $005E
+F5     EQU   $005F
+
+sA     EQU   $0009	*sA,sB,sC,sD,sE son los subtotales de cada artículo (en hexa)
+sB     EQU   $0019
+sC     EQU   $0029
+sD     EQU   $0039
+sE     EQU   $0049
+			
+ARTT   EQU   $0068	*ARTT es el total de artículos
+	
+TOT1   EQU   $006B	*TOT1,...,TOT5 son usadas para representar el total en BCD (decenas, centenas, etc)
+TOT2   EQU   $006C
+TOT3   EQU   $006D
+TOT4   EQU   $006E
+TOT5   EQU   $006F
+
+GATO   EQU   $0010	*"Booleano" para detectar si se borrará algo	
+TEMP   EQU   $0020	*almacena lo que se va a aumentar
+TOTAL  EQU   $0050
+SIGNO  EQU   $0090
+
+DIR_IMP EQU  $007B
+
+***********************************
+*      VARIABLES PARA ERROR       *
+***********************************
+
+ERR1   EQU   $0070 
+ERR2   EQU   $0071 
+ERR3   EQU   $0072 
+ERR4   EQU   $0073 
+ERR5   EQU   $0074 
+BCD1   EQU   $0060 
+BCD2   EQU   $0061 
+BCD3   EQU   $0062 
+
+***********************************
+*      INICIO DEL PROGRAMA        *
+***********************************
+
+       ORG   $4000
+
+NUEVE 	FCC   "NUEVEn"
+OCHO 	FCC   "OCHOn"
+SIETE 	FCC   "SIETEn"
+SEIS 	FCC   "SEISn"
+CINCO 	FCC   "CINCOn"
+CUATRO 	FCC   "CUATROn"
+TRES 	FCC   "TRESn"
+DOS 	FCC   "DOSn"
+MIL	 	FCC   "MILn"
+MILLONES FCC  "MILLONESn"
+NOVECIENTOS 	FCC   "NOVECIENTOSn"
+OCHOCIENTOS 	FCC   "OCHOCIENTOSn"
+SETECIENTOS 	FCC   "SETECIENTOSn"
+SEISCIENTOS 	FCC   "SEISCIENTOSn"
+QUINIENTOS 	FCC   "QUINIENTOSn"
+CUATROCIENTOS 	FCC   "CUATROCIENTOSn"
+TRESCIENTOS 	FCC   "TRESCIENTOSn"
+DOSCIENTOS 	FCC   "DOSCIENTOSn"
+CIENTO	 	FCC   "CIENTOn"
+CIEN	 	FCC   "CIENn"
+NOVENTA	 	FCC   "NOVENTAn"
+OCHENTA	 	FCC   "OCHENTAn"
+SETENTA	 	FCC   "SETENTAn"
+SESENTA	 	FCC   "SESENTAn"
+CINCUENTA 	FCC   "CINCUENTAn"
+CUARENTA 	FCC   "CUARENTAn"
+TREINTA	 	FCC   "TREINTAn"
+VEINTE	 	FCC   "VEINTEn"
+DIEZ 	FCC   "DIEZn"
+VEINTICINCO 	FCC   "VEINTICINCOn"
+QUINCE	 	FCC   "QUINCEn"
+Y_CINCO	 	FCC   "Y CINCOn"
+PESOS	 	FCC   "PESOSn"
+
+INICIO
+    LDS   #$00EE  
+    JSR   SERIAL
+
+LIMPIA			
+	CLR  A
+	CLR  AU
+	CLR  AD
+	CLR  AC
+	CLR  AUM
+	CLR  ADM
+	CLR  ACM
+	CLR  AUMI
+	CLR  ADMI
+	CLR  B
+	CLR  B1
+	CLR  B2
+	CLR  B3
+	CLR  B4
+	CLR  B5
+	CLR  C
+	CLR  C1
+	CLR  C2
+	CLR  C3
+	CLR  C4
+	CLR  C5
+	CLR  D
+	CLR  D1
+	CLR  D2
+	CLR  D3
+	CLR  D4
+	CLR  D5
+	CLR  E
+	CLR  E1
+	CLR  E2
+	CLR  E3
+	CLR  E4
+	CLR  E5
+	CLR  TOT1
+	CLR  TOT2
+	CLR  TOT3
+	CLR  TOT4
+	CLR  TOT5
+	CLR  DECA
+	CLR  DECB
+	CLR  DECC
+	CLR  DECD
+	CLR  DECE
+	CLR  sA
+	CLR  sB
+	CLR  sC
+	CLR  sD
+	CLR  sE
+	CLR  GATO
+	CLR  TOTAL
+	CLR  SIGNO
+
+ENCICLATE
+	LDAA #'?
+	STAA ORDEN
+	LDAB SIGNO
+CICLO
+	LDAA ORDEN
+	CMPA #'?
+	BEQ CICLO
+	CMPB #'?
+	BEQ CAMBIAR_SIGNO
+	CMPA #'A
+	BEQ MODIFICAR_A
+	CMPA #'B
+	BEQ MODIFICAR_B
+	CMPA #'C
+	BEQ MODIFICAR_C
+	CMPA #'D
+	BEQ MODIFICAR_D
+	CMPA #'E
+	BEQ MODIFICAR_E
+	JMP ENCICLATE
+
+MODIFICAR_A
+	CMPB #'+
+	BEQ AGREGAR_A
+	CMPB #0
+	BEQ AGREGAR_A
+	CMPB #'-
+	BNE ENCICLATE
+	JMP QUITAR_A
+
+MODIFICAR_B
+	CMPB #'+
+	BEQ AGREGAR_B
+	CMPB #0
+	BEQ AGREGAR_B
+	CMPB #'-
+	BNE ENCICLATE
+	JMP QUITAR_B
+
+MODIFICAR_C
+	CMPB #'+
+	BEQ AGREGAR_C
+	CMPB #0
+	BEQ AGREGAR_C
+	CMPB #'-
+	BNE ENCICLATE
+	JMP QUITAR_C
+
+MODIFICAR_D
+	CMPB #'+
+	BEQ AGREGAR_D
+	CMPB #0
+	BEQ AGREGAR_D
+	CMPB #'-
+	BNE ENCICLATE
+	JMP QUITAR_C
+
+MODIFICAR_E
+	CMPB #'+
+	BEQ AGREGAR_E
+	CMPB #0
+	BEQ AGREGAR_E
+	CMPB #'-
+	BNE ENCICLATE
+	JMP QUITAR_E
+
+MODIFICAR_F
+	CMPB #'+
+	BEQ AGREGAR_F
+	CMPB #0
+	BEQ AGREGAR_F
+	CMPB #'-
+	BNE ENCICLATE
+	JMP QUITAR_F
+
+CAMBIAR_SIGNO
+	CMPA #'+
+	BEQ SUMAR
+	CMPA #'-
+	BEQ RESTAR
+	CMPA #'=
+	BNE PUENTE_ENCICLATE
+	JMP CALCULAR
+
+QUITAR_SIGNO
+	LDAB #'?
+	STAB SIGNO
+	JMP ENCICLATE
+
+AGREGAR_A
+	INC A
+	JMP QUITAR_SIGNO
+
+AGREGAR_B
+	INC B
+	JMP QUITAR_SIGNO
+
+AGREGAR_C
+	INC C
+	JMP QUITAR_SIGNO
+
+AGREGAR_D
+	INC D
+	JMP QUITAR_SIGNO
+
+AGREGAR_E
+	INC E
+	JMP QUITAR_SIGNO
+
+AGREGAR_F
+	INC F
+	JMP QUITAR_SIGNO
+
+PUENTE_ENCICLATE
+	JMP ENCICLATE
+
+SUMAR
+	LDAB #'+
+	STAB SIGNO
+	JMP ENCICLATE
+
+RESTAR 
+	LDAB #'-
+	STAB SIGNO
+	JMP ENCICLATE
+
+QUITAR_A
+	DEC A
+	BLT AGREGAR_A
+	JMP QUITAR_SIGNO
+
+QUITAR_B
+	DEC B
+	BLT AGREGAR_B
+	JMP QUITAR_SIGNO
+
+QUITAR_C
+	DEC C
+	BLT AGREGAR_C
+	JMP QUITAR_SIGNO
+
+QUITAR_D
+	DEC D
+	BLT AGREGAR_D
+	JMP QUITAR_SIGNO
+	
+QUITAR_E
+	DEC E
+	BLT AGREGAR_E
+	JMP QUITAR_SIGNO
+
+QUITAR_F
+	DEC F
+	BLT AGREGAR_F
+	JMP QUITAR_SIGNO
+
+CALCULAR 
+	NOP
+
+**************************************************
+* SUBRUTINA  DE CONFIGURACION PUERTO SERIAL      *
+**************************************************
+SERIAL
+       LDD   #$302C  * CONFIGURA PUERTO SERIAL
+       STAA  BAUD    * BAUD  9600  para cristal de 8MHz
+       STAB  SCCR2   * HABILITA  RX Y TX PERO INTERRUPCN SOLO RX
+       LDAA  #$00
+       STAA  SCCR1   * 8 BITS
+
+       LDAA  #$FE    * CONFIG PUERTO D COMO SALIDAS (EXCEPTO PD0)
+       STAA  DDRD    * SEA  ENABLE DEL DISPLAY  PD4  Y RS PD3
+                     
+      
+       LDAA  #$04
+       STAA  HPRIO
+
+       LDAA  #$00
+       TAP
+       RTS
+
+***********************************
+* ATENCION A INTERRUPCION SERIAL
+***********************************
+       ORG  $F100
+  
+       
+ 
+       LDAA SCSR
+       LDAA SCDR
+       STAA ORDEN
+       DEC  VAR
+
+        
+
+       RTI
+
+
+***********************************
+* VECTOR INTERRUPCION SERIAL
+***********************************
+       ORG   $FFD6
+       FCB   $F1,$00       
+
+ 
+
+***********************************
+*RESET
+***********************************
+       ORG    $FFFE
+RESET  FCB    $80,$00
+***********************************
+
+
+********
+***TODO LO SIGUIENTE USA LA DIRECTIVA FCC PARA ESCRIBIR LA INFROAMCIÓN DEL TICKET, AL ESTAR AL FINAL NO TIENE EL PROBLEMA DE IMPRIMIR LOS OPCODES
+********
+	ORG   $3000
+MSG1	FCC   'TICKET'
+	ORG   $3010
+MSG2	FCC   '----------------'
+	ORG   $30C0
+MSG3	FCC   '----------------'
+	ORG   $30D0
+MSG4	FCC   'TOTAL:'
+	ORG   $30E4
+MSG5	FCC   'PIEZAS'
+
+	END

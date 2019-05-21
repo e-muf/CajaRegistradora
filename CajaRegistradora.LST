@@ -1,0 +1,711 @@
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       1
+
+                   **********************************
+                   *        CAJA REGISTRADORA               *
+                   **********************************
+                   PACTL  EQU   $1026
+                   PACNT  EQU   $1027
+                   ADCTL  EQU   $1030
+                   ADR1   EQU   $1031
+                   ADR2   EQU   $1032
+                   ADR3   EQU   $1033
+                   ADR4   EQU   $1034
+                   OPTION EQU   $1039
+
+                   PORTA  EQU   $1000
+                   PORTD  EQU   $1008
+                   PORTE  EQU   $100A
+                   PORTG  EQU   $1002
+
+                   DDRA   EQU   $1001
+                   DDRD   EQU   $1009
+                   DDRG   EQU   $1003
+
+                   TMSK2  EQU   $1024
+                   TFLG2  EQU   $1025
+
+                   SCDR   EQU   $102F
+                   SCCR2  EQU   $102D
+                   SCSR   EQU   $102E
+                   SCCR1  EQU   $102C
+                   BAUD   EQU   $102B
+                   HPRIO  EQU   $103C
+                   SPCR   EQU   $1028
+                   CSCTL  EQU   $105D
+                   OPT2   EQU   $1038
+
+                   C50    EQU   $0032
+                   C10    EQU       $000A
+
+                   DIR_BASE EQU  $0050
+
+                   ***********************************
+                   *     DECLARACION DE VARIABLES    *
+                   ***********************************
+                   ORDEN  EQU   $0000      * VARIABLE PARA LEER EL PUERTO SERIAL
+                   VAR    EQU   $0001  * ESTA NO SE PARA QUE LA VAYAMOS A
+.                  UTILIZAR
+
+                   A      EQU   $0202      * CONTADOR DE ARTICULAS 'A'
+                   AU     EQU       $0204  * UNIDADES DE 'A'
+                   AD     EQU   $0205  * DECENAS DE 'A'
+                   AC     EQU   $0206  * CENTENAS DE 'A'
+                   TA     EQU   $0207  * TOTAL DE 'A'
+
+                   B      EQU   $0212      * CONTADOR DE ARTICULOS 'B'
+                   BD     EQU       $0214  * DECENAS DE 'B'
+                   BC     EQU   $0215  * CENTENAS DE 'B'
+                   BUM    EQU   $0216  * UNIDADES DE MILLAR DE 'B'
+                   TB     EQU   $0217  * TOTAL DE 'B'
+
+                   C      EQU   $0222      * CONTADOR DE ARTICULOS 'C'
+                   CD     EQU       $0224  * DECENAS DE 'C'
+                   CC     EQU   $0225  * CENTENAS DE 'C'
+                   CUM    EQU   $0226  * UNIDADES DE MILLAR DE 'C'
+                   TC     EQU   $0227  * TOTAL DE 'C'
+
+                   D      EQU   $0232  * CONTADOR DE ARTICULOS 'D'
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       2
+
+                   DC     EQU       $0234  * CENTENAS DE 'D'
+                   DUM    EQU   $0235  * UNIDADES DE MILLAR DE 'D'
+                   DDM    EQU   $0236  * DECENAS DE MILLAR DE 'D'
+                   TD     EQU   $0237  * TOTAL DE 'D'
+
+                   E      EQU   $0242  * CONTADOR DE ARTICULOS 'E'
+                   EC     EQU       $0244  * CENTENAS DE 'E'
+                   EUM    EQU   $0245  * UNIDADES DE MILLAR DE 'E'
+                   EDM    EQU   $0246  * DECENAS DE MILLAR DE 'E'
+                   TE     EQU   $0247  * TOTAL DE 'E'
+
+                   F      EQU   $0252      * CONTADOR DE ARTICULOS 'F'
+                   FUM    EQU       $0254  * UNIDADES DE MILLAR DE 'F'
+                   FDM    EQU   $0255  * DECENAS DE MILLAR DE 'F'
+                   FCM    EQU   $0256  * CENTENAS  DE MILLAR DE 'F'
+                   TF     EQU   $0257  * TOTAL DE 'F'
+
+                   G      EQU   $0262      * CONTADOR DE ARTICULOS 'G'
+                   GUM    EQU       $0264  * UNIDADES DE MILLAR DE 'G'
+                   GDM    EQU   $0265  * DECENAS DE MILLAR DE 'G'
+                   GCM    EQU   $0266  * CENTENAS  DE MILLAR DE 'G'
+                   TG     EQU   $0267  * TOTAL DE 'G'
+
+                   H      EQU   $0272      * CONTADOR DE ARTICULOS 'H'
+                   HDM    EQU       $0274  * DECENAS DE MILLAR DE 'H'
+                   HCM    EQU   $0275  * CENTENAS  DE MILLAR DE 'H'
+                   HUMI   EQU   $0276  * UNIDADES DE MILLON DE 'H'
+                   TH     EQU   $0277  * TOTAL DE 'H'
+
+                   I      EQU   $0282      * CONTADOR DE ARTICULOS 'I'
+                   IDM    EQU       $0284  * DECENAS DE MILLAR DE 'I'
+                   ICM    EQU   $0285  * CENTENAS  DE MILLAR DE 'I'
+                   IUMI   EQU   $0286  * UNIDADES DE MILLON DE 'I'
+                   IDMI   EQU   $0287  * DECENAS DE MILLON DE 'I'
+                   TI     EQU   $0288  * TOTAL DE 'I'
+
+                   J      EQU   $0292  * CONTADOR DE ARTICULOS 'J'
+                   JCM    EQU   $0294  * CENTENAS  DE MILLAR DE 'J'
+                   JUMI   EQU   $0295  * UNIDADES DE MILLON DE 'J'
+                   JDMI   EQU   $0296  * DECENAS DE MILLON DE 'J'
+                   TJ     EQU   $0297  * TOTAL DE 'J'
+
+                   ARTT   EQU   $0300      * ARTT es el total de artculos
+
+                   UT     EQU   $0017      * TOTAL EN BCD (UNIDADES, DECENAS,
+.                  CENTENAS, ...)
+                   DT     EQU   $0016
+                   CT     EQU   $0015
+                   UMT    EQU   $0014
+                   DMT    EQU   $0013
+                   CMT    EQU   $0012
+                   UMIT   EQU   $0011
+                   DMIT   EQU   $0010
+
+                   TOTAL  EQU   $0050
+                   SIGNO  EQU   $0002
+
+                   DIR_IMP EQU  $007B
+
+                   ***********************************
+                   *      VARIABLES PARA ERROR       *
+                   ***********************************
+
+                   ERR1   EQU   $0030
+                   ERR2   EQU   $0031
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       3
+
+                   ERR3   EQU   $0032
+                   ERR4   EQU   $0033
+                   ERR5   EQU   $0034
+                   ERR6   EQU   $0035
+                   ERR7   EQU   $0036
+                   ERR8   EQU   $0037
+                   BCD1   EQU   $0060
+                   BCD2   EQU   $0061
+                   BCD3   EQU   $0062
+
+                   ***********************************
+                   *      INICIO DEL PROGRAMA        *
+                   ***********************************
+
+                          ORG   $4000
+
+  4000 4E 55 45 56 NUEVE   FCC   "NUEVEn"
+. 4004 45 6E
+  4006 4F 43 48 4F OCHO    FCC   "OCHOn"
+. 400A 6E
+  400B 53 49 45 54 SIETE   FCC   "SIETEn"
+. 400F 45 6E
+  4011 53 45 49 53 SEIS    FCC   "SEISn"
+. 4015 6E
+  4016 43 49 4E 43 CINCO   FCC   "CINCOn"
+. 401A 4F 6E
+  401C 43 55 41 54 CUATRO  FCC   "CUATROn"
+. 4020 52 4F 6E
+  4023 54 52 45 53 TRES    FCC   "TRESn"
+. 4027 6E
+  4028 44 4F 53 6E DOS     FCC   "DOSn"
+  402C 4D 49 4C 6E MIL             FCC   "MILn"
+  4030 4D 49 4C 4C MILLONES FCC  "MILLONESn"
+. 4034 4F 4E 45 53
+. 4038 6E
+  4039 4E 4F 56 45 NOVECIENTOS     FCC   "NOVECIENTOSn"
+. 403D 43 49 45 4E
+. 4041 54 00 53 6E
+  4045 4F 43 48 4F OCHOCIENTOS     FCC   "OCHOCIENTOSn"
+. 4049 43 49 45 4E
+. 404D 54 4F 53 6E
+  4051 53 45 54 45 SETECIENTOS     FCC   "SETECIENTOSn"
+. 4055 43 49 45 4E
+. 4059 54 4F 53 6E
+  405D 53 45 49 53 SEISCIENTOS     FCC   "SEISCIENTOSn"
+. 4061 43 49 45 4E
+. 4065 54 4F 53 6E
+  4069 51 55 49 4E QUINIENTOS      FCC   "QUINIENTOSn"
+. 406D 49 45 4E 54
+. 4071 4F 53 6E
+  4074 43 55 41 54 CUATROCIENTOS   FCC   "CUATROCIENTOSn"
+. 4078 52 4F 43 49
+. 407C 45 4E 54 4F
+. 4080 53 6E
+  4082 54 52 45 53 TRESCIENTOS     FCC   "TRESCIENTOSn"
+. 4086 43 49 45 4E
+. 408A 54 4F 53 6E
+  408E 44 4F 53 43 DOSCIENTOS      FCC   "DOSCIENTOSn"
+. 4092 49 45 4E 54
+. 4096 4F 53 6E
+  4099 43 49 45 4E CIENTO          FCC   "CIENTOn"
+. 409D 54 4F 6E
+  40A0 43 49 45 4E CIEN            FCC   "CIENn"
+. 40A4 6E
+  40A5 4E 4F 56 45 NOVENTA         FCC   "NOVENTAn"
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       4
+
+. 40A9 4E 54 41 6E
+  40AD 4F 43 48 45 OCHENTA         FCC   "OCHENTAn"
+. 40B1 4E 54 41 6E
+  40B5 53 45 54 45 SETENTA         FCC   "SETENTAn"
+. 40B9 4E 54 41 6E
+  40BD 53 45 53 45 SESENTA         FCC   "SESENTAn"
+. 40C1 4E 54 41 6E
+  40C5 43 49 4E 43 CINCUENTA       FCC   "CINCUENTAn"
+. 40C9 55 45 4E 54
+. 40CD 41 6E
+  40CF 43 55 41 52 CUARENTA        FCC   "CUARENTAn"
+. 40D3 45 4E 54 41
+. 40D7 6E
+  40D8 54 52 45 49 TREINTA         FCC   "TREINTAn"
+. 40DC 4E 54 41 6E
+  40E0 56 45 49 4E VEINTE          FCC   "VEINTEn"
+. 40E4 54 45 6E
+  40E7 44 49 45 5A DIEZ    FCC   "DIEZn"
+. 40EB 6E
+  40EC 56 45 49 4E VEINTICINCO     FCC   "VEINTICINCOn"
+. 40F0 54 49 43 49
+. 40F4 4E 43 4F 6E
+  40F8 51 55 49 4E QUINCE          FCC   "QUINCEn"
+. 40FC 43 45 6E
+  40FF 59 20 43 49 Y_CINCO         FCC   "Y CINCOn"
+. 4103 4E 43 4F 6E
+  4107 50 45 53 4F PESOS           FCC   "PESOSn"
+. 410B 53 6E
+
+                   INICIO
+  410D 8E 00 EE        LDS   #$00EE
+  4110 BD 42 B4        JSR   SERIAL
+
+                   LIMPIAR
+  4113 7F 02 02            CLR A
+  4116 7F 02 04            CLR AU
+  4119 7F 02 05            CLR AD
+  411C 7F 02 06            CLR AC
+  411F 7F 02 07            CLR TA
+  4122 7F 02 12            CLR B
+  4125 7F 02 14            CLR BD
+  4128 7F 02 15            CLR BC
+  412B 7F 02 16            CLR BUM
+  412E 7F 02 17            CLR TB
+  4131 7F 02 22            CLR C
+  4134 7F 02 24            CLR CD
+  4137 7F 02 25            CLR CC
+  413A 7F 02 26            CLR CUM
+  413D 7F 02 27            CLR TC
+  4140 7F 02 32            CLR D
+  4143 7F 02 34            CLR DC
+  4146 7F 02 35            CLR DUM
+  4149 7F 02 36            CLR DDM
+  414C 7F 02 37            CLR TD
+  414F 7F 02 42            CLR E
+  4152 7F 02 44            CLR EC
+  4155 7F 02 45            CLR EUM
+  4158 7F 02 46            CLR EDM
+  415B 7F 02 47            CLR TE
+  415E 7F 02 52            CLR F
+  4161 7F 02 54            CLR FUM
+  4164 7F 02 55            CLR FDM
+  4167 7F 02 56            CLR FCM
+  416A 7F 02 57            CLR TF
+  416D 7F 02 62            CLR G
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       5
+
+  4170 7F 02 64            CLR GUM
+  4173 7F 02 65            CLR GDM
+  4176 7F 02 66            CLR GCM
+  4179 7F 02 67            CLR TG
+  417C 7F 02 72            CLR H
+  417F 7F 02 74            CLR HDM
+  4182 7F 02 75            CLR HCM
+  4185 7F 02 76            CLR HUMI
+  4188 7F 02 77            CLR TH
+  418B 7F 02 82            CLR I
+  418E 7F 02 84            CLR IDM
+  4191 7F 02 85            CLR ICM
+  4194 7F 02 86            CLR IUMI
+  4197 7F 02 87            CLR IDMI
+  419A 7F 02 88            CLR TI
+  419D 7F 02 92            CLR J
+  41A0 7F 02 94            CLR JCM
+  41A3 7F 02 95            CLR JUMI
+  41A6 7F 02 96            CLR JDMI
+  41A9 7F 02 97            CLR TJ
+  41AC 7F 00 17            CLR UT
+  41AF 7F 00 16            CLR DT
+  41B2 7F 00 15            CLR CT
+  41B5 7F 00 14            CLR UMT
+  41B8 7F 00 13            CLR DMT
+  41BB 7F 00 12            CLR CMT
+  41BE 7F 00 11            CLR UMIT
+  41C1 7F 00 10            CLR DMIT
+  41C4 7F 00 50            CLR TOTAL
+
+  41C7 C6 2B               LDAB #'+
+  41C9 D7 02               STAB SIGNO
+                   ENCICLATE
+  41CB 86 3F               LDAA #'?
+  41CD 97 00               STAA ORDEN
+  41CF D6 02               LDAB SIGNO
+                   CICLO
+  41D1 96 00               LDAA ORDEN
+  41D3 81 3F               CMPA #'?
+  41D5 27 FA               BEQ CICLO
+  41D7 C1 3F               CMPB #'?
+  41D9 27 5D               BEQ CAMBIAR_SIGNO
+  41DB 81 41               CMPA #'A
+  41DD 27 17               BEQ MODIFICAR_A
+  41DF 81 42               CMPA #'B
+  41E1 27 1E               BEQ MODIFICAR_B
+  41E3 81 43               CMPA #'C
+  41E5 27 25               BEQ MODIFICAR_C
+  41E7 81 44               CMPA #'D
+  41E9 27 2C               BEQ MODIFICAR_D
+  41EB 81 45               CMPA #'E
+  41ED 27 33               BEQ MODIFICAR_E
+  41EF 81 46               CMPA #'F'
+  41F1 27 3A               BEQ MODIFICAR_F
+  41F3 7E 41 CB            JMP ENCICLATE
+
+                   MODIFICAR_A
+  41F6 C1 2B               CMPB #'+
+  41F8 27 54               BEQ AGREGAR_A
+  41FA C1 2D               CMPB #'-
+  41FC 26 CD               BNE ENCICLATE
+  41FE 7E 42 83            JMP QUITAR_A
+
+                   MODIFICAR_B
+  4201 C1 2B               CMPB #'+
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       6
+
+  4203 27 4F               BEQ AGREGAR_B
+  4205 C1 2D               CMPB #'-
+  4207 26 C2               BNE ENCICLATE
+  4209 7E 42 8B            JMP QUITAR_B
+
+                   MODIFICAR_C
+  420C C1 2B               CMPB #'+
+  420E 27 4A               BEQ AGREGAR_C
+  4210 C1 2D               CMPB #'-
+  4212 26 B7               BNE ENCICLATE
+  4214 7E 42 93            JMP QUITAR_C
+
+                   MODIFICAR_D
+  4217 C1 2B               CMPB #'+
+  4219 27 45               BEQ AGREGAR_D
+  421B C1 2D               CMPB #'-
+  421D 26 AC               BNE ENCICLATE
+  421F 7E 42 9B            JMP QUITAR_D
+
+                   MODIFICAR_E
+  4222 C1 2B               CMPB #'+
+  4224 27 40               BEQ AGREGAR_E
+  4226 C1 2D               CMPB #'-
+  4228 26 A1               BNE ENCICLATE
+  422A 7E 42 A3            JMP QUITAR_E
+
+                   MODIFICAR_F
+  422D C1 2B               CMPB #'+
+  422F 27 3B               BEQ AGREGAR_F
+  4231 C1 2D               CMPB #'-
+  4233 26 96               BNE ENCICLATE
+  4235 7E 42 AB            JMP QUITAR_F
+
+                   CAMBIAR_SIGNO
+  4238 81 2B               CMPA #'+
+  423A 27 39               BEQ SUMAR
+  423C 81 2D               CMPA #'-
+  423E 27 3C               BEQ RESTAR
+  4240 81 3D               CMPA #'=
+  4242 26 2E               BNE PUENTE_ENCICLATE
+  4244 7E 42 B3            JMP CALCULAR
+
+                   QUITAR_SIGNO
+  4247 C6 3F               LDAB #'?
+  4249 D7 02               STAB SIGNO
+  424B 7E 41 CB            JMP ENCICLATE
+
+                   AGREGAR_A
+  424E 7C 02 02            INC A
+  4251 7E 42 47            JMP QUITAR_SIGNO
+
+                   AGREGAR_B
+  4254 7C 02 12            INC B
+  4257 7E 42 47            JMP QUITAR_SIGNO
+
+                   AGREGAR_C
+  425A 7C 02 22            INC C
+  425D 7E 42 47            JMP QUITAR_SIGNO
+
+                   AGREGAR_D
+  4260 7C 02 32            INC D
+  4263 7E 42 47            JMP QUITAR_SIGNO
+
+                   AGREGAR_E
+  4266 7C 02 42            INC E
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       7
+
+  4269 7E 42 47            JMP QUITAR_SIGNO
+
+                   AGREGAR_F
+  426C 7C 02 52            INC F
+  426F 7E 42 47            JMP QUITAR_SIGNO
+
+                   PUENTE_ENCICLATE
+  4272 7E 41 CB            JMP ENCICLATE
+
+                   SUMAR
+  4275 C6 2B               LDAB #'+
+  4277 D7 02               STAB SIGNO
+  4279 7E 41 CB            JMP ENCICLATE
+
+                   RESTAR
+  427C C6 2D               LDAB #'-
+  427E D7 02               STAB SIGNO
+  4280 7E 41 CB            JMP ENCICLATE
+
+                   QUITAR_A
+  4283 7A 02 02            DEC A
+  4286 2D C6               BLT AGREGAR_A
+  4288 7E 42 47            JMP QUITAR_SIGNO
+
+                   QUITAR_B
+  428B 7A 02 12            DEC B
+  428E 2D C4               BLT AGREGAR_B
+  4290 7E 42 47            JMP QUITAR_SIGNO
+
+                   QUITAR_C
+  4293 7A 02 22            DEC C
+  4296 2D C2               BLT AGREGAR_C
+  4298 7E 42 47            JMP QUITAR_SIGNO
+
+                   QUITAR_D
+  429B 7A 02 32            DEC D
+  429E 2D C0               BLT AGREGAR_D
+  42A0 7E 42 47            JMP QUITAR_SIGNO
+
+                   QUITAR_E
+  42A3 7A 02 42            DEC E
+  42A6 2D BE               BLT AGREGAR_E
+  42A8 7E 42 47            JMP QUITAR_SIGNO
+
+                   QUITAR_F
+  42AB 7A 02 52            DEC F
+  42AE 2D BC               BLT AGREGAR_F
+  42B0 7E 42 47            JMP QUITAR_SIGNO
+
+                   CALCULAR
+  42B3 01                  NOP
+
+                   **************************************************
+                   * SUBRUTINA  DE CONFIGURACION PUERTO SERIAL      *
+                   **************************************************
+                   SERIAL
+  42B4 CC 30 2C        LDD   #$302C  * CONFIGURA PUERTO SERIAL
+  42B7 B7 10 2B        STAA  BAUD    * BAUD  9600  para cristal de 8MHz
+  42BA F7 10 2D        STAB  SCCR2   * HABILITA  RX Y TX PERO INTERRUPCN SOLO RX
+  42BD 86 00           LDAA  #$00
+  42BF B7 10 2C        STAA  SCCR1   * 8 BITS
+
+  42C2 86 FE           LDAA  #$FE    * CONFIG PUERTO D COMO SALIDAS (EXCEPTO
+.                  PD0)
+  42C4 B7 10 09        STAA  DDRD    * SEA  ENABLE DEL DISPLAY  PD4  Y RS PD3
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       8
+
+
+  42C7 86 04           LDAA  #$04
+  42C9 B7 10 3C        STAA  HPRIO
+
+  42CC 86 00           LDAA  #$00
+  42CE 06              TAP
+  42CF 39              RTS
+                   ***********************************
+                   * ATENCION A INTERRUPCION SERIAL
+                   ***********************************
+                       ORG  $F100
+
+  F100 B6 10 2E        LDAA SCSR
+  F103 B6 10 2F        LDAA SCDR
+  F106 97 00           STAA ORDEN
+  F108 7A 00 01        DEC  VAR
+  F10B 3B              RTI
+
+                   ***********************************
+                   * VECTOR INTERRUPCION SERIAL
+                   ***********************************
+                       ORG   $FFD6
+  FFD6 F1 00           FCB   $F1,$00
+
+                   ***********************************
+                   *RESET
+                   ***********************************
+                       ORG    $FFFE
+  FFFE 80 00       RESET  FCB    $80,$00
+                   ***********************************
+
+
+                   ********
+                   ***TODO LO SIGUIENTE USA LA DIRECTIVA FCC PARA ESCRIBIR LA
+.                  INFROAMCIN DEL TICKET, AL ESTAR AL FINAL NO TIENE EL PROBLEMA
+.                  DE IMPRIMIR LOS OPCODES
+                   ********
+                           ORG   $0040
+  0040 54 49 43 4B MSG1    FCC   'TICKET'
+. 0044 45 54
+                           ORG   $0050
+  0050 2D 2D 2D 2D MSG2    FCC   '----------------'
+. 0054 2D 2D 2D 2D
+. 0058 2D 2D 2D 2D
+. 005C 2D 2D 2D 2D
+                           ORG   $0100
+  0100 2D 2D 2D 2D MSG3    FCC   '----------------'
+. 0104 2D 2D 2D 2D
+. 0108 2D 2D 2D 2D
+. 010C 2D 2D 2D 2D
+                           ORG   $0110
+  0110 54 4F 54 41 MSG4    FCC   'TOTAL:'
+. 0114 4C 3A
+                           ORG   $0124
+  0124 50 49 45 5A MSG5    FCC   'PIEZAS'
+. 0128 41 53
+
+                           END
+
+  Symbol Table 
+
+  MSG3               0100
+  TI                 0288
+  MSG4               0110
+  TJ                 0297
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       9
+
+  MSG5               0124
+  CUARENTA           40CF
+  CC                 0225
+  CMT                0012
+  JUMI               0295
+  CD                 0224
+  UMIT               0011
+  HCM                0275
+  CUATROCIENTOS      4074
+  TRES               4023
+  CT                 0015
+  MODIFICAR_A        41F6
+  MODIFICAR_B        4201
+  MODIFICAR_C        420C
+  MODIFICAR_D        4217
+  MODIFICAR_E        4222
+  CIENTO             4099
+  MODIFICAR_F        422D
+  DC                 0234
+  SERIAL             42B4
+  HDM                0274
+  OPTION             1039
+  OCHOCIENTOS        4045
+  NUEVE              4000
+  UT                 0017
+  EUM                0245
+  MILLONES           4030
+  SETECIENTOS        4051
+  DT                 0016
+  EDM                0246
+  EC                 0244
+  BUM                0216
+  PUENTE_ENCICLATE   4272
+  QUINIENTOS         4069
+  SIETE              400B
+  A                  0202
+  B                  0212
+  C                  0222
+  D                  0232
+  E                  0242
+  F                  0252
+  LIMPIAR            4113
+  G                  0262
+  H                  0272
+  I                  0282
+  J                  0292
+  DMIT               0010
+  RESTAR             427C
+  DIR_BASE           0050
+  CSCTL              105D
+  PACTL              1026
+  IDMI               0287
+  TMSK2              1024
+  SCCR1              102C
+  SCCR2              102D
+  C10                000A
+  HUMI               0276
+  DMT                0013
+  ICM                0285
+  SEISCIENTOS        405D
+  BAUD               102B
+  CIEN               40A0
+  CINCO              4016
+  CICLO              41D1
+  DOSCIENTOS         408E
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      10
+
+  AGREGAR_A          424E
+  AGREGAR_B          4254
+  AGREGAR_C          425A
+  AGREGAR_D          4260
+  FCM                0256
+  AGREGAR_E          4266
+  AGREGAR_F          426C
+  NOVECIENTOS        4039
+  VAR                0001
+  ADCTL              1030
+  IDM                0284
+  ARTT               0300
+  FUM                0254
+  CINCUENTA          40C5
+  QUITAR_SIGNO       4247
+  TFLG2              1025
+  PESOS              4107
+  FDM                0255
+  DOS                4028
+  CUM                0226
+  Y_CINCO            40FF
+  OPT2               1038
+  SIGNO              0002
+  QUITAR_A           4283
+  QUITAR_B           428B
+  QUITAR_C           4293
+  QUITAR_D           429B
+  QUITAR_E           42A3
+  QUITAR_F           42AB
+  C50                0032
+  CAMBIAR_SIGNO      4238
+  ERR1               0030
+  ERR2               0031
+  RESET              FFFE
+  ERR3               0032
+  ERR4               0033
+  ENCICLATE          41CB
+  ERR5               0034
+  TREINTA            40D8
+  ERR6               0035
+  JDMI               0296
+  ERR7               0036
+  TRESCIENTOS        4082
+  ERR8               0037
+  VEINTICINCO        40EC
+  ORDEN              0000
+  JCM                0294
+  HPRIO              103C
+  IUMI               0286
+  GCM                0266
+  OCHO               4006
+  SCSR               102E
+  DIEZ               40E7
+  GUM                0264
+  ADR1               1031
+  ADR2               1032
+  ADR3               1033
+  ADR4               1034
+  SUMAR              4275
+  GDM                0265
+  UMT                0014
+  DUM                0235
+  PORTA              1000
+  SEIS               4011
+  NOVENTA            40A5
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      11
+
+  TOTAL              0050
+  PORTD              1008
+  SETENTA            40B5
+  PORTE              100A
+  PORTG              1002
+  CUATRO             401C
+  DDM                0236
+  DDRA               1001
+  OCHENTA            40AD
+  DDRD               1009
+  DDRG               1003
+  DIR_IMP            007B
+  SCDR               102F
+  CALCULAR           42B3
+  VEINTE             40E0
+  AC                 0206
+  AD                 0205
+  PACNT              1027
+  SESENTA            40BD
+  AU                 0204
+  SPCR               1028
+  BC                 0215
+  QUINCE             40F8
+  MIL                402C
+  BD                 0214
+  BCD1               0060
+  BCD2               0061
+  INICIO             410D
+  BCD3               0062
+  TA                 0207
+  TB                 0217
+  TC                 0227
+  TD                 0237
+  TE                 0247
+  TF                 0257
+  MSG1               0040
+  TG                 0267
+  MSG2               0050
+  TH                 0277

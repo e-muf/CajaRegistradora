@@ -1,7 +1,7 @@
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       1
 
                    **********************************
-                   *        CAJA REGISTRADORA               *
+                   *        CAJA REGISTRADORA       *
                    **********************************
                    PACTL  EQU   $1026
                    PACNT  EQU   $1027
@@ -35,7 +35,7 @@
                    OPT2   EQU   $1038
 
                    C50    EQU   $0032
-                   C10    EQU       $000A
+                   C10    EQU   $000A
 
                    DIR_BASE EQU  $0060
 
@@ -47,19 +47,19 @@
 .                  UTILIZAR
 
                    A      EQU   $0202      * CONTADOR DE ARTICULAS 'A'
-                   AU     EQU       $0204  * UNIDADES DE 'A'
+                   AU     EQU   $0204  * UNIDADES DE 'A'
                    AD     EQU   $0205  * DECENAS DE 'A'
                    AC     EQU   $0206  * CENTENAS DE 'A'
                    TA     EQU   $0207  * TOTAL DE 'A'
 
                    B      EQU   $0212      * CONTADOR DE ARTICULOS 'B'
-                   BD     EQU       $0214  * DECENAS DE 'B'
+                   BD     EQU   $0214  * DECENAS DE 'B'
                    BC     EQU   $0215  * CENTENAS DE 'B'
                    BUM    EQU   $0216  * UNIDADES DE MILLAR DE 'B'
                    TB     EQU   $0217  * TOTAL DE 'B'
 
                    C      EQU   $0222      * CONTADOR DE ARTICULOS 'C'
-                   CD     EQU       $0224  * DECENAS DE 'C'
+                   CD     EQU   $0224  * DECENAS DE 'C'
                    CC     EQU   $0225  * CENTENAS DE 'C'
                    CUM    EQU   $0226  * UNIDADES DE MILLAR DE 'C'
                    TC     EQU   $0227  * TOTAL DE 'C'
@@ -67,37 +67,37 @@
                    D      EQU   $0232  * CONTADOR DE ARTICULOS 'D'
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       2
 
-                   DC     EQU       $0234  * CENTENAS DE 'D'
+                   DC     EQU   $0234  * CENTENAS DE 'D'
                    DUM    EQU   $0235  * UNIDADES DE MILLAR DE 'D'
                    DDM    EQU   $0236  * DECENAS DE MILLAR DE 'D'
                    TD     EQU   $0237  * TOTAL DE 'D'
 
                    E      EQU   $0242  * CONTADOR DE ARTICULOS 'E'
-                   EC     EQU       $0244  * CENTENAS DE 'E'
+                   EC     EQU   $0244  * CENTENAS DE 'E'
                    EUM    EQU   $0245  * UNIDADES DE MILLAR DE 'E'
                    EDM    EQU   $0246  * DECENAS DE MILLAR DE 'E'
                    TE     EQU   $0247  * TOTAL DE 'E'
 
                    F      EQU   $0252      * CONTADOR DE ARTICULOS 'F'
-                   FUM    EQU       $0254  * UNIDADES DE MILLAR DE 'F'
+                   FUM    EQU   $0254  * UNIDADES DE MILLAR DE 'F'
                    FDM    EQU   $0255  * DECENAS DE MILLAR DE 'F'
                    FCM    EQU   $0256  * CENTENAS  DE MILLAR DE 'F'
                    TF     EQU   $0257  * TOTAL DE 'F'
 
                    G      EQU   $0262      * CONTADOR DE ARTICULOS 'G'
-                   GUM    EQU       $0264  * UNIDADES DE MILLAR DE 'G'
+                   GUM    EQU   $0264  * UNIDADES DE MILLAR DE 'G'
                    GDM    EQU   $0265  * DECENAS DE MILLAR DE 'G'
                    GCM    EQU   $0266  * CENTENAS  DE MILLAR DE 'G'
                    TG     EQU   $0267  * TOTAL DE 'G'
 
                    H      EQU   $0272      * CONTADOR DE ARTICULOS 'H'
-                   HDM    EQU       $0274  * DECENAS DE MILLAR DE 'H'
+                   HDM    EQU   $0274  * DECENAS DE MILLAR DE 'H'
                    HCM    EQU   $0275  * CENTENAS  DE MILLAR DE 'H'
                    HUMI   EQU   $0276  * UNIDADES DE MILLON DE 'H'
                    TH     EQU   $0277  * TOTAL DE 'H'
 
                    I      EQU   $0282      * CONTADOR DE ARTICULOS 'I'
-                   IDM    EQU       $0284  * DECENAS DE MILLAR DE 'I'
+                   IDM    EQU   $0284  * DECENAS DE MILLAR DE 'I'
                    ICM    EQU   $0285  * CENTENAS  DE MILLAR DE 'I'
                    IUMI   EQU   $0286  * UNIDADES DE MILLON DE 'I'
                    IDMI   EQU   $0287  * DECENAS DE MILLON DE 'I'
@@ -109,7 +109,7 @@
                    JDMI   EQU   $0296  * DECENAS DE MILLON DE 'J'
                    TJ     EQU   $0297  * TOTAL DE 'J'
 
-                   ARTT   EQU   $0300      * ARTT es el total de artculos
+                   ARTT   EQU   $0300      * ARTT es el total de art?ulos
 
                    UT     EQU   $0017      * TOTAL EN BCD (UNIDADES, DECENAS,
 .                  CENTENAS, ...)
@@ -232,7 +232,7 @@
 
                    INICIO
   410D 8E 00 EE        LDS   #$00EE
-  4110 BD 43 9E        JSR   SERIAL
+  4110 BD 44 00        JSR   SERIAL
 
                    LIMPIAR
   4113 7F 02 02            CLR A
@@ -455,13 +455,13 @@
 
 
                    ERROR_A
-  42B1 BD 43 5E            JSR ERROR
+  42B1 BD 43 C0            JSR ERROR
                    AGREGAR_A
   42B4 7C 02 02            INC A
   42B7 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_B
-  42BA BD 43 5E            JSR ERROR
+  42BA BD 43 C0            JSR ERROR
                    AGREGAR_B
   42BD 7C 02 12            INC B
   42C0 7E 42 1C            JMP QUITAR_SIGNO
@@ -469,49 +469,49 @@
                    ERROR_C
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       8
 
-  42C3 BD 43 5E            JSR ERROR
+  42C3 BD 43 C0            JSR ERROR
                    AGREGAR_C
   42C6 7C 02 22            INC C
   42C9 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_D
-  42CC BD 43 5E            JSR ERROR
+  42CC BD 43 C0            JSR ERROR
                    AGREGAR_D
   42CF 7C 02 32            INC D
   42D2 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_E
-  42D5 BD 43 5E            JSR ERROR
+  42D5 BD 43 C0            JSR ERROR
                    AGREGAR_E
   42D8 7C 02 42            INC E
   42DB 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_F
-  42DE BD 43 5E            JSR ERROR
+  42DE BD 43 C0            JSR ERROR
                    AGREGAR_F
   42E1 7C 02 52            INC F
   42E4 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_G
-  42E7 BD 43 5E            JSR ERROR
+  42E7 BD 43 C0            JSR ERROR
                    AGREGAR_G
   42EA 7C 02 62            INC G
   42ED 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_H
-  42F0 BD 43 5E            JSR ERROR
+  42F0 BD 43 C0            JSR ERROR
                    AGREGAR_H
   42F3 7C 02 72            INC H
   42F6 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_I
-  42F9 BD 43 5E            JSR ERROR
+  42F9 BD 43 C0            JSR ERROR
                    AGREGAR_I
   42FC 7C 02 82            INC I
   42FF 7E 42 1C            JMP QUITAR_SIGNO
 
                    ERROR_J
-  4302 BD 43 5E            JSR ERROR
+  4302 BD 43 C0            JSR ERROR
                    AGREGAR_J
   4305 7C 02 92            INC J
   4308 7E 42 1C            JMP QUITAR_SIGNO
@@ -569,67 +569,135 @@
   4358 7E 42 1C            JMP QUITAR_SIGNO
 
                    CALCULAR
-  435B BD 43 7F            JSR LIMPIAR_ERROR
+  435B BD 43 E1            JSR LIMPIAR_ERROR
+
+  435E B6 02 02            LDAA A
+  4361 F6 02 02            LDAB A
+  4364 BD 43 8E            JSR OFERTA_1_50
+  4367 FF 02 07            STX TA
+
+  436A B6 02 22            LDAA C
+  436D F6 02 22            LDAB C
+  4370 BD 43 8E            JSR OFERTA_1_50
+  4373 FF 02 27            STX TC
+
+  4376 B6 02 12            LDAA B
+  4379 F6 02 12            LDAB B
+  437C BD 43 A7            JSR OFERTA_1_10
+  437F FF 02 17            STX TB
+
+  4382 B6 02 32            LDAA D
+  4385 F6 02 32            LDAB D
+  4388 BD 43 A7            JSR OFERTA_1_10
+  438B FF 02 37            STX TD
+
+                   OFERTA_1_50
+  438E 5A                  DECB
+  438F 5A                  DECB
+  4390 5A                  DECB
+  4391 5A                  DECB
+  4392 2E 08               BGT PROMOCION_1_50
+  4394 C6 32               LDAB #C50
+  4396 3D                  MUL
+  4397 CE 00 01            LDX #1
+  439A 02                  IDIV
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      10
+
+  439B 39                  RTS
+                   PROMOCION_1_50
+  439C C6 04               LDAB #4
+  439E 1B                  ABA
+  439F C6 32               LDAB #C50
+  43A1 3D                  MUL
+  43A2 CE 00 02            LDX #2
+  43A5 02                  IDIV
+  43A6 39                  RTS
+
+                   OFERTA_1_10
+  43A7 5A                  DECB
+  43A8 5A                  DECB
+  43A9 5A                  DECB
+  43AA 5A                  DECB
+  43AB 2E 08               BGT PROMOCION_1_10
+  43AD C6 0A               LDAB #C10
+  43AF 3D                  MUL
+  43B0 CE 00 01            LDX #1
+  43B3 02                  IDIV
+  43B4 39                  RTS
+                   PROMOCION_1_10
+  43B5 C6 04               LDAB #4
+  43B7 1B                  ABA
+  43B8 C6 0A               LDAB #C10
+  43BA 3D                  MUL
+  43BB CE 00 02            LDX #2
+  43BE 02                  IDIV
+  43BF 39                  RTS
+
+
+                   OFERTA_2
+                   PROMOCION_2
+                   OFERTA_3
+                   PROMOCION_3
 
                    **************************************************
                    *              SUBRUTINA DE ERROR                *
                    **************************************************
                    ERROR
-  435E 86 5B               LDAA  #'[
-  4360 97 30               STAA  ERR1
-  4362 86 2D               LDAA  #'-
-  4364 97 31               STAA  ERR2
-  4366 86 5D               LDAA  #']
-  4368 97 32               STAA  ERR3
-  436A 86 45               LDAA  #'E
-  436C 97 33               STAA  ERR4
-  436E 86 52               LDAA  #'R
-  4370 97 34               STAA  ERR5
-  4372 86 52               LDAA  #'R
-  4374 97 35               STAA  ERR6
-  4376 86 4F               LDAA  #'O
-  4378 97 36               STAA  ERR7
-  437A 86 52               LDAA  #'R
-  437C 97 37               STAA  ERR8
-  437E 39                  RTS
+  43C0 86 5B               LDAA  #'[
+  43C2 97 30               STAA  ERR1
+  43C4 86 2D               LDAA  #'-
+  43C6 97 31               STAA  ERR2
+  43C8 86 5D               LDAA  #']
+  43CA 97 32               STAA  ERR3
+  43CC 86 45               LDAA  #'E
+  43CE 97 33               STAA  ERR4
+  43D0 86 52               LDAA  #'R
+  43D2 97 34               STAA  ERR5
+  43D4 86 52               LDAA  #'R
+  43D6 97 35               STAA  ERR6
+  43D8 86 4F               LDAA  #'O
+  43DA 97 36               STAA  ERR7
+  43DC 86 52               LDAA  #'R
+  43DE 97 37               STAA  ERR8
+  43E0 39                  RTS
 
                    LIMPIAR_ERROR
-  437F C6 32       ESPERAR LDAB #C50
-  4381 01                  NOP
-  4382 5A                  DECB
-  4383 27 FA               BEQ ESPERAR
-  4385 7F 00 30            CLR  ERR1
-  4388 7F 00 31            CLR  ERR2
-  438B 7F 00 32            CLR  ERR3
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      10
+  43E1 C6 32       ESPERAR LDAB #C50
+  43E3 01                  NOP
+  43E4 5A                  DECB
+  43E5 27 FA               BEQ ESPERAR
+  43E7 7F 00 30            CLR  ERR1
+  43EA 7F 00 31            CLR  ERR2
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      11
 
-  438E 7F 00 33            CLR  ERR4
-  4391 7F 00 34            CLR  ERR5
-  4394 7F 00 35            CLR  ERR6
-  4397 7F 00 36            CLR  ERR7
-  439A 7F 00 37            CLR  ERR8
-  439D 39                  RTS
+  43ED 7F 00 32            CLR  ERR3
+  43F0 7F 00 33            CLR  ERR4
+  43F3 7F 00 34            CLR  ERR5
+  43F6 7F 00 35            CLR  ERR6
+  43F9 7F 00 36            CLR  ERR7
+  43FC 7F 00 37            CLR  ERR8
+  43FF 39                  RTS
 
                    **************************************************
                    * SUBRUTINA  DE CONFIGURACION PUERTO SERIAL      *
                    **************************************************
                    SERIAL
-  439E CC 30 2C        LDD   #$302C  * CONFIGURA PUERTO SERIAL
-  43A1 B7 10 2B        STAA  BAUD    * BAUD  9600  para cristal de 8MHz
-  43A4 F7 10 2D        STAB  SCCR2   * HABILITA  RX Y TX PERO INTERRUPCN SOLO RX
-  43A7 86 00           LDAA  #$00
-  43A9 B7 10 2C        STAA  SCCR1   * 8 BITS
+  4400 CC 30 2C        LDD   #$302C  * CONFIGURA PUERTO SERIAL
+  4403 B7 10 2B        STAA  BAUD    * BAUD  9600  para cristal de 8MHz
+  4406 F7 10 2D        STAB  SCCR2   * HABILITA  RX Y TX PERO INTERRUPCN SOLO RX
+  4409 86 00           LDAA  #$00
+  440B B7 10 2C        STAA  SCCR1   * 8 BITS
 
-  43AC 86 FE           LDAA  #$FE    * CONFIG PUERTO D COMO SALIDAS (EXCEPTO
+  440E 86 FE           LDAA  #$FE    * CONFIG PUERTO D COMO SALIDAS (EXCEPTO
 .                  PD0)
-  43AE B7 10 09        STAA  DDRD    * SEA  ENABLE DEL DISPLAY  PD4  Y RS PD3
+  4410 B7 10 09        STAA  DDRD    * SEA  ENABLE DEL DISPLAY  PD4  Y RS PD3
 
-  43B1 86 04           LDAA  #$04
-  43B3 B7 10 3C        STAA  HPRIO
+  4413 86 04           LDAA  #$04
+  4415 B7 10 3C        STAA  HPRIO
 
-  43B6 86 00           LDAA  #$00
-  43B8 06              TAP
-  43B9 39              RTS
+  4418 86 00           LDAA  #$00
+  441A 06              TAP
+  441B 39              RTS
                    ***********************************
                    * ATENCION A INTERRUPCION SERIAL
                    ***********************************
@@ -657,7 +725,7 @@
 
                    ********
                    ***TODO LO SIGUIENTE USA LA DIRECTIVA FCC PARA ESCRIBIR LA
-.                  INFROAMCIN DEL TICKET, AL ESTAR AL FINAL NO TIENE EL PROBLEMA
+.                  INFROAMCI? DEL TICKET, AL ESTAR AL FINAL NO TIENE EL PROBLEMA
 .                  DE IMPRIMIR LOS OPCODES
                    ********
                            ORG   $0040
@@ -667,9 +735,9 @@
   0050 2D 2D 2D 2D MSG2    FCC   '----------------'
 . 0054 2D 2D 2D 2D
 . 0058 2D 2D 2D 2D
-. 005C 2D 2D 2D 2D
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      11
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      12
 
+. 005C 2D 2D 2D 2D
                            ORG   $0100
   0100 2D 2D 2D 2D MSG3    FCC   '----------------'
 . 0104 2D 2D 2D 2D
@@ -705,20 +773,22 @@
   MODIFICAR_F        427A
   DC                 0234
   MODIFICAR_G        4285
-  SERIAL             439E
+  SERIAL             4400
   MODIFICAR_H        4290
   MODIFICAR_I        429B
   HDM                0274
   MODIFICAR_J        42A6
   OPTION             1039
+  PROMOCION_2        43C0
   OCHOCIENTOS        4045
   NUEVE              4000
+  PROMOCION_3        43C0
   UT                 0017
   EUM                0245
   MILLONES           4030
   SETECIENTOS        4051
   DT                 0016
-  ERROR              435E
+  ERROR              43C0
   EDM                0246
   EC                 0244
   BUM                0216
@@ -732,12 +802,13 @@
   E                  0242
   F                  0252
   LIMPIAR            4113
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      13
+
   G                  0262
   H                  0272
   I                  0282
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      12
-
   J                  0292
+  PROMOCION_1_10     43B5
   DMIT               0010
   RESTAR             422A
   DIR_BASE           0060
@@ -761,6 +832,7 @@
   BAUD               102B
   CIEN               40A0
   CINCO              4016
+  OFERTA_1_10        43A7
   CICLO              41D1
   DOSCIENTOS         408E
   AGREGAR_A          42B4
@@ -781,6 +853,7 @@
   ARTT               0300
   FUM                0254
   CINCUENTA          40C5
+  PROMOCION_1_50     439C
   QUITAR_SIGNO       421C
   TFLG2              1025
   PESOS              4107
@@ -796,14 +869,14 @@
   QUITAR_D           4323
   QUITAR_E           432B
   QUITAR_F           4333
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      14
+
   QUITAR_G           433B
   QUITAR_H           4343
   QUITAR_I           434B
   QUITAR_J           4353
-  ESPERAR            437F
+  ESPERAR            43E1
   C50                0032
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      13
-
   CAMBIAR_SIGNO      420D
   ERR1               0030
   ERR2               0031
@@ -812,6 +885,7 @@
   ERR4               0033
   ENCICLATE          41CB
   ERR5               0034
+  OFERTA_1_50        438E
   TREINTA            40D8
   ERR6               0035
   JDMI               0296
@@ -837,8 +911,10 @@
   OCHO               4006
   SCSR               102E
   DIEZ               40E7
-  LIMPIAR_ERROR      437F
+  LIMPIAR_ERROR      43E1
   GUM                0264
+  OFERTA_2           43C0
+  OFERTA_3           43C0
   ADR1               1031
   ADR2               1032
   ADR3               1033
@@ -860,6 +936,8 @@
   DDRA               1001
   OCHENTA            40AD
   DDRD               1009
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      15
+
   DDRG               1003
   DIR_IMP            007B
   SCDR               102F
@@ -869,8 +947,6 @@
   AD                 0205
   PACNT              1027
   SESENTA            40BD
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      14
-
   AU                 0204
   SPCR               1028
   BC                 0215

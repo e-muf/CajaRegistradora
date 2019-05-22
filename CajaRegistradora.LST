@@ -232,472 +232,613 @@
 
                    INICIO
   410D 8E 00 EE        LDS   #$00EE
-  4110 BD 44 00        JSR   SERIAL
+  4110 BD 45 18        JSR   SERIAL
 
                    LIMPIAR
-  4113 7F 02 02            CLR A
-  4116 7F 02 04            CLR AU
-  4119 7F 02 05            CLR AD
-  411C 7F 02 06            CLR AC
-  411F 7F 02 07            CLR TA
-  4122 7F 02 12            CLR B
-  4125 7F 02 14            CLR BD
-  4128 7F 02 15            CLR BC
-  412B 7F 02 16            CLR BUM
-  412E 7F 02 17            CLR TB
-  4131 7F 02 22            CLR C
-  4134 7F 02 24            CLR CD
-  4137 7F 02 25            CLR CC
-  413A 7F 02 26            CLR CUM
-  413D 7F 02 27            CLR TC
-  4140 7F 02 32            CLR D
-  4143 7F 02 34            CLR DC
-  4146 7F 02 35            CLR DUM
-  4149 7F 02 36            CLR DDM
-  414C 7F 02 37            CLR TD
-  414F 7F 02 42            CLR E
-  4152 7F 02 44            CLR EC
-  4155 7F 02 45            CLR EUM
-  4158 7F 02 46            CLR EDM
-  415B 7F 02 47            CLR TE
-  415E 7F 02 52            CLR F
-  4161 7F 02 54            CLR FUM
-  4164 7F 02 55            CLR FDM
-  4167 7F 02 56            CLR FCM
-  416A 7F 02 57            CLR TF
-  416D 7F 02 62            CLR G
+  4113 7F 02 B0            CLR $02B0
+  4116 7F 02 B1            CLR $02B1
+  4119 7F 02 B3            CLR $02B3
+  411C 7F 02 B4            CLR $02B4
+  411F 7F 02 03            CLR $0203
+  4122 7F 02 02            CLR A
+  4125 7F 02 04            CLR AU
+  4128 7F 02 05            CLR AD
+  412B 7F 02 06            CLR AC
+  412E 7F 02 07            CLR TA
+  4131 7F 02 13            CLR $0213
+  4134 7F 02 12            CLR B
+  4137 7F 02 14            CLR BD
+  413A 7F 02 15            CLR BC
+  413D 7F 02 16            CLR BUM
+  4140 7F 02 17            CLR TB
+  4143 7F 02 23            CLR $0223
+  4146 7F 02 22            CLR C
+  4149 7F 02 24            CLR CD
+  414C 7F 02 25            CLR CC
+  414F 7F 02 26            CLR CUM
+  4152 7F 02 27            CLR TC
+  4155 7F 02 33            CLR $0233
+  4158 7F 02 32            CLR D
+  415B 7F 02 34            CLR DC
+  415E 7F 02 35            CLR DUM
+  4161 7F 02 36            CLR DDM
+  4164 7F 02 37            CLR TD
+  4167 7F 02 43            CLR $0243
+  416A 7F 02 42            CLR E
+  416D 7F 02 44            CLR EC
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       5
 
-  4170 7F 02 64            CLR GUM
-  4173 7F 02 65            CLR GDM
-  4176 7F 02 66            CLR GCM
-  4179 7F 02 67            CLR TG
-  417C 7F 02 72            CLR H
-  417F 7F 02 74            CLR HDM
-  4182 7F 02 75            CLR HCM
-  4185 7F 02 76            CLR HUMI
-  4188 7F 02 77            CLR TH
-  418B 7F 02 82            CLR I
-  418E 7F 02 84            CLR IDM
-  4191 7F 02 85            CLR ICM
-  4194 7F 02 86            CLR IUMI
-  4197 7F 02 87            CLR IDMI
-  419A 7F 02 88            CLR TI
-  419D 7F 02 92            CLR J
-  41A0 7F 02 94            CLR JCM
-  41A3 7F 02 95            CLR JUMI
-  41A6 7F 02 96            CLR JDMI
-  41A9 7F 02 97            CLR TJ
-  41AC 7F 00 17            CLR UT
-  41AF 7F 00 16            CLR DT
-  41B2 7F 00 15            CLR CT
-  41B5 7F 00 14            CLR UMT
-  41B8 7F 00 13            CLR DMT
-  41BB 7F 00 12            CLR CMT
-  41BE 7F 00 11            CLR UMIT
-  41C1 7F 00 10            CLR DMIT
-  41C4 7F 00 50            CLR TOTAL
+  4170 7F 02 45            CLR EUM
+  4173 7F 02 46            CLR EDM
+  4176 7F 02 47            CLR TE
+  4179 7F 02 53            CLR $0253
+  417C 7F 02 52            CLR F
+  417F 7F 02 54            CLR FUM
+  4182 7F 02 55            CLR FDM
+  4185 7F 02 56            CLR FCM
+  4188 7F 02 57            CLR TF
+  418B 7F 02 63            CLR $0263
+  418E 7F 02 62            CLR G
+  4191 7F 02 64            CLR GUM
+  4194 7F 02 65            CLR GDM
+  4197 7F 02 66            CLR GCM
+  419A 7F 02 67            CLR TG
+  419D 7F 02 73            CLR $0273
+  41A0 7F 02 72            CLR H
+  41A3 7F 02 74            CLR HDM
+  41A6 7F 02 75            CLR HCM
+  41A9 7F 02 76            CLR HUMI
+  41AC 7F 02 77            CLR TH
+  41AF 7F 02 83            CLR $0283
+  41B2 7F 02 82            CLR I
+  41B5 7F 02 84            CLR IDM
+  41B8 7F 02 85            CLR ICM
+  41BB 7F 02 86            CLR IUMI
+  41BE 7F 02 87            CLR IDMI
+  41C1 7F 02 88            CLR TI
+  41C4 7F 02 93            CLR $0293
+  41C7 7F 02 92            CLR J
+  41CA 7F 02 94            CLR JCM
+  41CD 7F 02 95            CLR JUMI
+  41D0 7F 02 96            CLR JDMI
+  41D3 7F 02 97            CLR TJ
+  41D6 7F 00 17            CLR UT
+  41D9 7F 00 16            CLR DT
+  41DC 7F 00 15            CLR CT
+  41DF 7F 00 14            CLR UMT
+  41E2 7F 00 13            CLR DMT
+  41E5 7F 00 12            CLR CMT
+  41E8 7F 00 11            CLR UMIT
+  41EB 7F 00 10            CLR DMIT
+  41EE 7F 00 50            CLR TOTAL
 
-  41C7 C6 2B               LDAB #'+
-  41C9 D7 02               STAB SIGNO
+  41F1 C6 2B               LDAB #'+
+  41F3 D7 02               STAB SIGNO
                    ENCICLATE
-  41CB 86 3F               LDAA #'?
-  41CD 97 00               STAA ORDEN
-  41CF D6 02               LDAB SIGNO
+  41F5 86 3F               LDAA #'?
+  41F7 97 00               STAA ORDEN
+  41F9 D6 02               LDAB SIGNO
                    CICLO
-  41D1 96 00               LDAA ORDEN
-  41D3 81 3F               CMPA #'?
-  41D5 27 FA               BEQ CICLO
-  41D7 C1 3F               CMPB #'?
-  41D9 27 32               BEQ CAMBIAR_SIGNO
-  41DB 81 4E               CMPA #'N
-  41DD 27 2B               BEQ PUENTE_LIMPIAR
-  41DF 81 41               CMPA #'A
-  41E1 27 60               BEQ MODIFICAR_A
-  41E3 81 42               CMPA #'B
-  41E5 27 67               BEQ MODIFICAR_B
-  41E7 81 43               CMPA #'C
-  41E9 27 6E               BEQ MODIFICAR_C
-  41EB 81 44               CMPA #'D
-  41ED 27 75               BEQ MODIFICAR_D
-  41EF 81 45               CMPA #'E
-  41F1 27 7C               BEQ MODIFICAR_E
-  41F3 81 46               CMPA #'F
-  41F5 27 3A               BEQ PUENTE_F
-  41F7 81 47               CMPA #'G
-  41F9 27 39               BEQ PUENTE_G
-  41FB 81 48               CMPA #'H
-  41FD 27 38               BEQ PUENTE_H
-  41FF 81 49               CMPA #'I
-  4201 27 37               BEQ PUENTE_I
-  4203 81 4A               CMPA #'J
-  4205 27 36               BEQ PUENTE_J
-  4207 7E 41 CB            JMP ENCICLATE
+  41FB 96 00               LDAA ORDEN
+  41FD 81 3F               CMPA #'?
+  41FF 27 FA               BEQ CICLO
+  4201 C1 3F               CMPB #'?
+  4203 27 32               BEQ CAMBIAR_SIGNO
+  4205 81 4E               CMPA #'N
+  4207 27 2B               BEQ PUENTE_LIMPIAR
+  4209 81 41               CMPA #'A
+  420B 27 60               BEQ MODIFICAR_A
+  420D 81 42               CMPA #'B
+  420F 27 67               BEQ MODIFICAR_B
+  4211 81 43               CMPA #'C
+  4213 27 6E               BEQ MODIFICAR_C
+  4215 81 44               CMPA #'D
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       6
 
+  4217 27 75               BEQ MODIFICAR_D
+  4219 81 45               CMPA #'E
+  421B 27 7C               BEQ MODIFICAR_E
+  421D 81 46               CMPA #'F
+  421F 27 3A               BEQ PUENTE_F
+  4221 81 47               CMPA #'G
+  4223 27 39               BEQ PUENTE_G
+  4225 81 48               CMPA #'H
+  4227 27 38               BEQ PUENTE_H
+  4229 81 49               CMPA #'I
+  422B 27 37               BEQ PUENTE_I
+  422D 81 4A               CMPA #'J
+  422F 27 36               BEQ PUENTE_J
+  4231 7E 41 F5            JMP ENCICLATE
 
                    PUENTE_LIMPIAR
-  420A 7E 41 13            JMP LIMPIAR
+  4234 7E 41 13            JMP LIMPIAR
 
                    CAMBIAR_SIGNO
-  420D 81 2B               CMPA #'+
-  420F 27 12               BEQ SUMAR
-  4211 81 2D               CMPA #'-
-  4213 27 15               BEQ RESTAR
-  4215 81 3D               CMPA #'=
-  4217 26 B2               BNE ENCICLATE
-  4219 7E 43 5B            JMP CALCULAR
+  4237 81 2B               CMPA #'+
+  4239 27 12               BEQ SUMAR
+  423B 81 2D               CMPA #'-
+  423D 27 15               BEQ RESTAR
+  423F 81 3D               CMPA #'=
+  4241 26 B2               BNE ENCICLATE
+  4243 7E 43 85            JMP CALCULAR
 
                    QUITAR_SIGNO
-  421C C6 3F               LDAB #'?
-  421E D7 02               STAB SIGNO
-  4220 7E 41 CB            JMP ENCICLATE
+  4246 C6 3F               LDAB #'?
+  4248 D7 02               STAB SIGNO
+  424A 7E 41 F5            JMP ENCICLATE
 
                    SUMAR
-  4223 C6 2B               LDAB #'+
-  4225 D7 02               STAB SIGNO
-  4227 7E 41 CB            JMP ENCICLATE
+  424D C6 2B               LDAB #'+
+  424F D7 02               STAB SIGNO
+  4251 7E 41 F5            JMP ENCICLATE
 
                    RESTAR
-  422A C6 2D               LDAB #'-
-  422C D7 02               STAB SIGNO
-  422E 7E 41 CB            JMP ENCICLATE
+  4254 C6 2D               LDAB #'-
+  4256 D7 02               STAB SIGNO
+  4258 7E 41 F5            JMP ENCICLATE
 
                    PUENTE_F
-  4231 7E 42 7A            JMP MODIFICAR_F
+  425B 7E 42 A4            JMP MODIFICAR_F
 
                    PUENTE_G
-  4234 7E 42 85            JMP MODIFICAR_G
+  425E 7E 42 AF            JMP MODIFICAR_G
 
                    PUENTE_H
-  4237 7E 42 90            JMP MODIFICAR_H
+  4261 7E 42 BA            JMP MODIFICAR_H
 
                    PUENTE_I
-  423A 7E 42 9B            JMP MODIFICAR_I
+  4264 7E 42 C5            JMP MODIFICAR_I
 
                    PUENTE_J
-  423D 7E 42 A6            JMP MODIFICAR_J
+  4267 7E 42 D0            JMP MODIFICAR_J
 
                    PUENTE_ENCICLATE
-  4240 7E 41 CB            JMP ENCICLATE
+  426A 7E 41 F5            JMP ENCICLATE
 
                    MODIFICAR_A
-  4243 C1 2B               CMPB #'+
-  4245 27 6D               BEQ AGREGAR_A
-  4247 C1 2D               CMPB #'-
-  4249 26 F5               BNE PUENTE_ENCICLATE
-  424B 7E 43 0B            JMP QUITAR_A
-
-                   MODIFICAR_B
-  424E C1 2B               CMPB #'+
-  4250 27 6B               BEQ AGREGAR_B
-  4252 C1 2D               CMPB #'-
-  4254 26 EA               BNE PUENTE_ENCICLATE
-  4256 7E 43 13            JMP QUITAR_B
-
-                   MODIFICAR_C
-  4259 C1 2B               CMPB #'+
-  425B 27 69               BEQ AGREGAR_C
-  425D C1 2D               CMPB #'-
-  425F 26 DF               BNE PUENTE_ENCICLATE
+  426D C1 2B               CMPB #'+
+  426F 27 6D               BEQ AGREGAR_A
+  4271 C1 2D               CMPB #'-
+  4273 26 F5               BNE PUENTE_ENCICLATE
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       7
 
-  4261 7E 43 1B            JMP QUITAR_C
+  4275 7E 43 35            JMP QUITAR_A
+
+                   MODIFICAR_B
+  4278 C1 2B               CMPB #'+
+  427A 27 6B               BEQ AGREGAR_B
+  427C C1 2D               CMPB #'-
+  427E 26 EA               BNE PUENTE_ENCICLATE
+  4280 7E 43 3D            JMP QUITAR_B
+
+                   MODIFICAR_C
+  4283 C1 2B               CMPB #'+
+  4285 27 69               BEQ AGREGAR_C
+  4287 C1 2D               CMPB #'-
+  4289 26 DF               BNE PUENTE_ENCICLATE
+  428B 7E 43 45            JMP QUITAR_C
 
                    MODIFICAR_D
-  4264 C1 2B               CMPB #'+
-  4266 27 67               BEQ AGREGAR_D
-  4268 C1 2D               CMPB #'-
-  426A 26 D4               BNE PUENTE_ENCICLATE
-  426C 7E 43 23            JMP QUITAR_D
+  428E C1 2B               CMPB #'+
+  4290 27 67               BEQ AGREGAR_D
+  4292 C1 2D               CMPB #'-
+  4294 26 D4               BNE PUENTE_ENCICLATE
+  4296 7E 43 4D            JMP QUITAR_D
 
                    MODIFICAR_E
-  426F C1 2B               CMPB #'+
-  4271 27 65               BEQ AGREGAR_E
-  4273 C1 2D               CMPB #'-
-  4275 26 C9               BNE PUENTE_ENCICLATE
-  4277 7E 43 2B            JMP QUITAR_E
+  4299 C1 2B               CMPB #'+
+  429B 27 65               BEQ AGREGAR_E
+  429D C1 2D               CMPB #'-
+  429F 26 C9               BNE PUENTE_ENCICLATE
+  42A1 7E 43 55            JMP QUITAR_E
 
                    MODIFICAR_F
-  427A C1 2B               CMPB #'+
-  427C 27 63               BEQ AGREGAR_F
-  427E C1 2D               CMPB #'-
-  4280 26 BE               BNE PUENTE_ENCICLATE
-  4282 7E 43 33            JMP QUITAR_F
+  42A4 C1 2B               CMPB #'+
+  42A6 27 63               BEQ AGREGAR_F
+  42A8 C1 2D               CMPB #'-
+  42AA 26 BE               BNE PUENTE_ENCICLATE
+  42AC 7E 43 5D            JMP QUITAR_F
 
                    MODIFICAR_G
-  4285 C1 2B               CMPB #'+
-  4287 27 61               BEQ AGREGAR_G
-  4289 C1 2D               CMPB #'-
-  428B 26 B3               BNE PUENTE_ENCICLATE
-  428D 7E 43 3B            JMP QUITAR_G
+  42AF C1 2B               CMPB #'+
+  42B1 27 61               BEQ AGREGAR_G
+  42B3 C1 2D               CMPB #'-
+  42B5 26 B3               BNE PUENTE_ENCICLATE
+  42B7 7E 43 65            JMP QUITAR_G
 
                    MODIFICAR_H
-  4290 C1 2B               CMPB #'+
-  4292 27 5F               BEQ AGREGAR_H
-  4294 C1 2D               CMPB #'-
-  4296 26 A8               BNE PUENTE_ENCICLATE
-  4298 7E 43 43            JMP QUITAR_H
+  42BA C1 2B               CMPB #'+
+  42BC 27 5F               BEQ AGREGAR_H
+  42BE C1 2D               CMPB #'-
+  42C0 26 A8               BNE PUENTE_ENCICLATE
+  42C2 7E 43 6D            JMP QUITAR_H
 
                    MODIFICAR_I
-  429B C1 2B               CMPB #'+
-  429D 27 5D               BEQ AGREGAR_I
-  429F C1 2D               CMPB #'-
-  42A1 26 9D               BNE PUENTE_ENCICLATE
-  42A3 7E 43 4B            JMP QUITAR_I
+  42C5 C1 2B               CMPB #'+
+  42C7 27 5D               BEQ AGREGAR_I
+  42C9 C1 2D               CMPB #'-
+  42CB 26 9D               BNE PUENTE_ENCICLATE
+  42CD 7E 43 75            JMP QUITAR_I
 
                    MODIFICAR_J
-  42A6 C1 2B               CMPB #'+
-  42A8 27 5B               BEQ AGREGAR_J
-  42AA C1 2D               CMPB #'-
-  42AC 26 92               BNE PUENTE_ENCICLATE
-  42AE 7E 43 53            JMP QUITAR_J
+  42D0 C1 2B               CMPB #'+
+  42D2 27 5B               BEQ AGREGAR_J
+  42D4 C1 2D               CMPB #'-
+  42D6 26 92               BNE PUENTE_ENCICLATE
+  42D8 7E 43 7D            JMP QUITAR_J
+
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       8
 
 
                    ERROR_A
-  42B1 BD 43 C0            JSR ERROR
+  42DB BD 44 D8            JSR ERROR
                    AGREGAR_A
-  42B4 7C 02 02            INC A
-  42B7 7E 42 1C            JMP QUITAR_SIGNO
+  42DE 7C 02 02            INC A
+  42E1 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_B
-  42BA BD 43 C0            JSR ERROR
+  42E4 BD 44 D8            JSR ERROR
                    AGREGAR_B
-  42BD 7C 02 12            INC B
-  42C0 7E 42 1C            JMP QUITAR_SIGNO
+  42E7 7C 02 12            INC B
+  42EA 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_C
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       8
-
-  42C3 BD 43 C0            JSR ERROR
+  42ED BD 44 D8            JSR ERROR
                    AGREGAR_C
-  42C6 7C 02 22            INC C
-  42C9 7E 42 1C            JMP QUITAR_SIGNO
+  42F0 7C 02 22            INC C
+  42F3 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_D
-  42CC BD 43 C0            JSR ERROR
+  42F6 BD 44 D8            JSR ERROR
                    AGREGAR_D
-  42CF 7C 02 32            INC D
-  42D2 7E 42 1C            JMP QUITAR_SIGNO
+  42F9 7C 02 32            INC D
+  42FC 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_E
-  42D5 BD 43 C0            JSR ERROR
+  42FF BD 44 D8            JSR ERROR
                    AGREGAR_E
-  42D8 7C 02 42            INC E
-  42DB 7E 42 1C            JMP QUITAR_SIGNO
+  4302 7C 02 42            INC E
+  4305 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_F
-  42DE BD 43 C0            JSR ERROR
+  4308 BD 44 D8            JSR ERROR
                    AGREGAR_F
-  42E1 7C 02 52            INC F
-  42E4 7E 42 1C            JMP QUITAR_SIGNO
+  430B 7C 02 52            INC F
+  430E 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_G
-  42E7 BD 43 C0            JSR ERROR
+  4311 BD 44 D8            JSR ERROR
                    AGREGAR_G
-  42EA 7C 02 62            INC G
-  42ED 7E 42 1C            JMP QUITAR_SIGNO
+  4314 7C 02 62            INC G
+  4317 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_H
-  42F0 BD 43 C0            JSR ERROR
+  431A BD 44 D8            JSR ERROR
                    AGREGAR_H
-  42F3 7C 02 72            INC H
-  42F6 7E 42 1C            JMP QUITAR_SIGNO
+  431D 7C 02 72            INC H
+  4320 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_I
-  42F9 BD 43 C0            JSR ERROR
+  4323 BD 44 D8            JSR ERROR
                    AGREGAR_I
-  42FC 7C 02 82            INC I
-  42FF 7E 42 1C            JMP QUITAR_SIGNO
+  4326 7C 02 82            INC I
+  4329 7E 42 46            JMP QUITAR_SIGNO
 
                    ERROR_J
-  4302 BD 43 C0            JSR ERROR
+  432C BD 44 D8            JSR ERROR
                    AGREGAR_J
-  4305 7C 02 92            INC J
-  4308 7E 42 1C            JMP QUITAR_SIGNO
+  432F 7C 02 92            INC J
+  4332 7E 42 46            JMP QUITAR_SIGNO
 
                    QUITAR_A
-  430B 7A 02 02            DEC A
-  430E 2D A1               BLT ERROR_A
-  4310 7E 42 1C            JMP QUITAR_SIGNO
-
-                   QUITAR_B
-  4313 7A 02 12            DEC B
-  4316 2D A2               BLT ERROR_B
-  4318 7E 42 1C            JMP QUITAR_SIGNO
-
-                   QUITAR_C
-  431B 7A 02 22            DEC C
-  431E 2D A3               BLT ERROR_C
-  4320 7E 42 1C            JMP QUITAR_SIGNO
-
-                   QUITAR_D
-  4323 7A 02 32            DEC D
-  4326 2D A4               BLT ERROR_D
+  4335 7A 02 02            DEC A
+  4338 2D A1               BLT ERROR_A
+  433A 7E 42 46            JMP QUITAR_SIGNO
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE       9
 
-  4328 7E 42 1C            JMP QUITAR_SIGNO
+
+                   QUITAR_B
+  433D 7A 02 12            DEC B
+  4340 2D A2               BLT ERROR_B
+  4342 7E 42 46            JMP QUITAR_SIGNO
+
+                   QUITAR_C
+  4345 7A 02 22            DEC C
+  4348 2D A3               BLT ERROR_C
+  434A 7E 42 46            JMP QUITAR_SIGNO
+
+                   QUITAR_D
+  434D 7A 02 32            DEC D
+  4350 2D A4               BLT ERROR_D
+  4352 7E 42 46            JMP QUITAR_SIGNO
 
                    QUITAR_E
-  432B 7A 02 42            DEC E
-  432E 2D A5               BLT ERROR_E
-  4330 7E 42 1C            JMP QUITAR_SIGNO
+  4355 7A 02 42            DEC E
+  4358 2D A5               BLT ERROR_E
+  435A 7E 42 46            JMP QUITAR_SIGNO
 
                    QUITAR_F
-  4333 7A 02 52            DEC F
-  4336 2D A6               BLT ERROR_F
-  4338 7E 42 1C            JMP QUITAR_SIGNO
+  435D 7A 02 52            DEC F
+  4360 2D A6               BLT ERROR_F
+  4362 7E 42 46            JMP QUITAR_SIGNO
 
                    QUITAR_G
-  433B 7A 02 62            DEC G
-  433E 2D A7               BLT ERROR_G
-  4340 7E 42 1C            JMP QUITAR_SIGNO
+  4365 7A 02 62            DEC G
+  4368 2D A7               BLT ERROR_G
+  436A 7E 42 46            JMP QUITAR_SIGNO
 
                    QUITAR_H
-  4343 7A 02 72            DEC H
-  4346 2D A8               BLT ERROR_H
-  4348 7E 42 1C            JMP QUITAR_SIGNO
+  436D 7A 02 72            DEC H
+  4370 2D A8               BLT ERROR_H
+  4372 7E 42 46            JMP QUITAR_SIGNO
 
                    QUITAR_I
-  434B 7A 02 82            DEC I
-  434E 2D A9               BLT ERROR_I
-  4350 7E 42 1C            JMP QUITAR_SIGNO
+  4375 7A 02 82            DEC I
+  4378 2D A9               BLT ERROR_I
+  437A 7E 42 46            JMP QUITAR_SIGNO
 
                    QUITAR_J
-  4353 7A 02 92            DEC J
-  4356 2D AA               BLT ERROR_J
-  4358 7E 42 1C            JMP QUITAR_SIGNO
+  437D 7A 02 92            DEC J
+  4380 2D AA               BLT ERROR_J
+  4382 7E 42 46            JMP QUITAR_SIGNO
 
                    CALCULAR
-  435B BD 43 E1            JSR LIMPIAR_ERROR
+  4385 BD 44 F9            JSR LIMPIAR_ERROR
 
-  435E B6 02 02            LDAA A
-  4361 F6 02 02            LDAB A
-  4364 BD 43 8E            JSR OFERTA_1_50
-  4367 FF 02 07            STX TA
+  4388 B6 02 02            LDAA A
+  438B F6 02 02            LDAB A
+  438E BD 44 78            JSR OFERTA_1_50
+  4391 FF 02 07            STX TA
 
-  436A B6 02 22            LDAA C
-  436D F6 02 22            LDAB C
-  4370 BD 43 8E            JSR OFERTA_1_50
-  4373 FF 02 27            STX TC
+  4394 B6 02 12            LDAA B
+  4397 F6 02 12            LDAB B
+  439A BD 44 91            JSR OFERTA_1_10
+  439D FF 02 17            STX TB
 
-  4376 B6 02 12            LDAA B
-  4379 F6 02 12            LDAB B
-  437C BD 43 A7            JSR OFERTA_1_10
-  437F FF 02 17            STX TB
+  43A0 B6 02 22            LDAA C
+  43A3 F6 02 22            LDAB C
+  43A6 BD 44 78            JSR OFERTA_1_50
+  43A9 FF 02 27            STX TC
 
-  4382 B6 02 32            LDAA D
-  4385 F6 02 32            LDAB D
-  4388 BD 43 A7            JSR OFERTA_1_10
-  438B FF 02 37            STX TD
-
-                   OFERTA_1_50
-  438E 5A                  DECB
-  438F 5A                  DECB
-  4390 5A                  DECB
-  4391 5A                  DECB
-  4392 2E 08               BGT PROMOCION_1_50
-  4394 C6 32               LDAB #C50
-  4396 3D                  MUL
-  4397 CE 00 01            LDX #1
-  439A 02                  IDIV
+  43AC B6 02 32            LDAA D
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      10
 
-  439B 39                  RTS
+  43AF F6 02 32            LDAB D
+  43B2 BD 44 91            JSR OFERTA_1_10
+  43B5 FF 02 37            STX TD
+
+  43B8 B6 02 32            LDAA D
+  43BB F6 02 32            LDAB D
+  43BE BD 44 91            JSR OFERTA_1_10
+  43C1 FF 02 37            STX TD
+
+  43C4 B6 02 42            LDAA E
+  43C7 F6 02 42            LDAB E
+  43CA BD 44 AA            JSR OFERTA_2_50
+  43CD FF 02 47            STX TE
+
+  43D0 B6 02 52            LDAA F
+  43D3 F6 02 52            LDAB F
+  43D6 BD 44 C1            JSR OFERTA_2_10
+  43D9 FF 02 57            STX TF
+
+  43DC B6 02 62            LDAA G
+  43DF F6 02 62            LDAB G
+  43E2 BD 44 AA            JSR OFERTA_2_50
+  43E5 FF 02 67            STX TG
+
+  43E8 B6 02 72            LDAA H
+  43EB F6 02 72            LDAB H
+  43EE BD 44 C1            JSR OFERTA_2_10
+  43F1 FF 02 77            STX TH
+
+  43F4 F6 02 82            LDAB I
+  43F7 F7 02 B2            STAB $02B2
+                   CALCULAR_I
+  43FA F6 02 B2            LDAB $02B2
+  43FD C1 00               CMPB #0
+  43FF 27 2C               BEQ SUMAR_PRECIOS_I
+  4401 CE 00 02            LDX #2
+  4404 02                  IDIV
+  4405 1A 83 00 00         CPD #0
+  4409 27 11               BEQ MITAD_PRECIO_I
+  440B C6 01               LDAB #01
+  440D 86 32               LDAA #C50
+  440F 3D                  MUL
+  4410 F3 02 B0            ADDD $02B0
+  4413 FD 02 B0            STD  $02B0
+  4416 7A 02 B2            DEC $02B2
+  4419 7E 43 FA            JMP CALCULAR_I
+                   MITAD_PRECIO_I
+  441C 86 19               LDAA #$19
+  441E C6 01               LDAB #1
+  4420 3D                  MUL
+  4421 F3 02 B3            ADDD $02B3
+  4424 FD 02 B3            STD  $02B3
+  4427 7A 02 B2            DEC $02B2
+  442A 7E 43 FA            JMP CALCULAR_I
+                   SUMAR_PRECIOS_I
+  442D FC 02 B3            LDD $02B3
+  4430 F3 02 B0            ADDD $02B0
+  4433 FD 02 88            STD TI
+
+  4436 F6 02 92            LDAB J
+  4439 F7 02 B2            STAB $02B2
+                   CALCULAR_J
+  443C F6 02 B2            LDAB $02B2
+  443F C1 00               CMPB #0
+  4441 27 2C               BEQ SUMAR_PRECIOS_J
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      11
+
+  4443 CE 00 02            LDX #2
+  4446 02                  IDIV
+  4447 1A 83 00 00         CPD #0
+  444B 27 11               BEQ MITAD_PRECIO_J
+  444D C6 01               LDAB #01
+  444F 86 0A               LDAA #C10
+  4451 3D                  MUL
+  4452 F3 02 B0            ADDD $02B0
+  4455 FD 02 B0            STD  $02B0
+  4458 7A 02 B2            DEC $02B2
+  445B 7E 44 3C            JMP CALCULAR_J
+                   MITAD_PRECIO_J
+  445E 86 05               LDAA #$5
+  4460 C6 01               LDAB #1
+  4462 3D                  MUL
+  4463 F3 02 B3            ADDD $02B3
+  4466 FD 02 B3            STD  $02B3
+  4469 7A 02 B2            DEC $02B2
+  446C 7E 44 3C            JMP CALCULAR_J
+                   SUMAR_PRECIOS_J
+  446F FC 02 B3            LDD $02B3
+  4472 F3 02 B0            ADDD $02B0
+  4475 FD 02 97            STD TJ
+
+                   SEPARAR_UNIDADES
+
+
+                   **************************************************
+                   *            SUBRUTINA DE DESCUENTOS             *
+                   **************************************************
+                   OFERTA_1_50
+  4478 5A                  DECB
+  4479 5A                  DECB
+  447A 5A                  DECB
+  447B 5A                  DECB
+  447C 2E 08               BGT PROMOCION_1_50
+  447E C6 32               LDAB #C50
+  4480 3D                  MUL
+  4481 CE 00 01            LDX #1
+  4484 02                  IDIV
+  4485 39                  RTS
                    PROMOCION_1_50
-  439C C6 04               LDAB #4
-  439E 1B                  ABA
-  439F C6 32               LDAB #C50
-  43A1 3D                  MUL
-  43A2 CE 00 02            LDX #2
-  43A5 02                  IDIV
-  43A6 39                  RTS
+  4486 C6 04               LDAB #4
+  4488 1B                  ABA
+  4489 C6 32               LDAB #C50
+  448B 3D                  MUL
+  448C CE 00 02            LDX #2
+  448F 02                  IDIV
+  4490 39                  RTS
 
                    OFERTA_1_10
-  43A7 5A                  DECB
-  43A8 5A                  DECB
-  43A9 5A                  DECB
-  43AA 5A                  DECB
-  43AB 2E 08               BGT PROMOCION_1_10
-  43AD C6 0A               LDAB #C10
-  43AF 3D                  MUL
-  43B0 CE 00 01            LDX #1
-  43B3 02                  IDIV
-  43B4 39                  RTS
+  4491 5A                  DECB
+  4492 5A                  DECB
+  4493 5A                  DECB
+  4494 5A                  DECB
+  4495 2E 08               BGT PROMOCION_1_10
+  4497 C6 0A               LDAB #C10
+  4499 3D                  MUL
+  449A CE 00 01            LDX #1
+  449D 02                  IDIV
+  449E 39                  RTS
                    PROMOCION_1_10
-  43B5 C6 04               LDAB #4
-  43B7 1B                  ABA
-  43B8 C6 0A               LDAB #C10
-  43BA 3D                  MUL
-  43BB CE 00 02            LDX #2
-  43BE 02                  IDIV
-  43BF 39                  RTS
+  449F C6 04               LDAB #4
+  44A1 1B                  ABA
+  44A2 C6 0A               LDAB #C10
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      12
 
+  44A4 3D                  MUL
+  44A5 CE 00 02            LDX #2
+  44A8 02                  IDIV
+  44A9 39                  RTS
 
-                   OFERTA_2
-                   PROMOCION_2
-                   OFERTA_3
-                   PROMOCION_3
+                   OFERTA_2_50
+  44AA 5A                  DECB
+  44AB 5A                  DECB
+  44AC 5A                  DECB
+  44AD 5A                  DECB
+  44AE 5A                  DECB
+  44AF 2E 08               BGT PROMOCION_2_50
+  44B1 C6 32               LDAB #C50
+  44B3 3D                  MUL
+  44B4 CE 00 01            LDX #1
+  44B7 02                  IDIV
+  44B8 39                  RTS
+                   PROMOCION_2_50
+  44B9 C6 32               LDAB #C50
+  44BB 3D                  MUL
+  44BC CE 00 02            LDX #2
+  44BF 02                  IDIV
+  44C0 39                  RTS
+
+                   OFERTA_2_10
+  44C1 5A                  DECB
+  44C2 5A                  DECB
+  44C3 5A                  DECB
+  44C4 5A                  DECB
+  44C5 5A                  DECB
+  44C6 2E 08               BGT PROMOCION_2_10
+  44C8 C6 0A               LDAB #C10
+  44CA 3D                  MUL
+  44CB CE 00 01            LDX #1
+  44CE 02                  IDIV
+  44CF 39                  RTS
+                   PROMOCION_2_10
+  44D0 C6 0A               LDAB #C10
+  44D2 3D                  MUL
+  44D3 CE 00 02            LDX #2
+  44D6 02                  IDIV
+  44D7 39                  RTS
 
                    **************************************************
                    *              SUBRUTINA DE ERROR                *
                    **************************************************
                    ERROR
-  43C0 86 5B               LDAA  #'[
-  43C2 97 30               STAA  ERR1
-  43C4 86 2D               LDAA  #'-
-  43C6 97 31               STAA  ERR2
-  43C8 86 5D               LDAA  #']
-  43CA 97 32               STAA  ERR3
-  43CC 86 45               LDAA  #'E
-  43CE 97 33               STAA  ERR4
-  43D0 86 52               LDAA  #'R
-  43D2 97 34               STAA  ERR5
-  43D4 86 52               LDAA  #'R
-  43D6 97 35               STAA  ERR6
-  43D8 86 4F               LDAA  #'O
-  43DA 97 36               STAA  ERR7
-  43DC 86 52               LDAA  #'R
-  43DE 97 37               STAA  ERR8
-  43E0 39                  RTS
+  44D8 86 5B               LDAA  #'[
+  44DA 97 30               STAA  ERR1
+  44DC 86 2D               LDAA  #'-
+  44DE 97 31               STAA  ERR2
+  44E0 86 5D               LDAA  #']
+  44E2 97 32               STAA  ERR3
+  44E4 86 45               LDAA  #'E
+  44E6 97 33               STAA  ERR4
+  44E8 86 52               LDAA  #'R
+  44EA 97 34               STAA  ERR5
+  44EC 86 52               LDAA  #'R
+  44EE 97 35               STAA  ERR6
+  44F0 86 4F               LDAA  #'O
+  44F2 97 36               STAA  ERR7
+  44F4 86 52               LDAA  #'R
+  44F6 97 37               STAA  ERR8
+  44F8 39                  RTS
+
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      13
 
                    LIMPIAR_ERROR
-  43E1 C6 32       ESPERAR LDAB #C50
-  43E3 01                  NOP
-  43E4 5A                  DECB
-  43E5 27 FA               BEQ ESPERAR
-  43E7 7F 00 30            CLR  ERR1
-  43EA 7F 00 31            CLR  ERR2
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      11
-
-  43ED 7F 00 32            CLR  ERR3
-  43F0 7F 00 33            CLR  ERR4
-  43F3 7F 00 34            CLR  ERR5
-  43F6 7F 00 35            CLR  ERR6
-  43F9 7F 00 36            CLR  ERR7
-  43FC 7F 00 37            CLR  ERR8
-  43FF 39                  RTS
+  44F9 C6 32       ESPERAR LDAB #C50
+  44FB 01                  NOP
+  44FC 5A                  DECB
+  44FD 27 FA               BEQ ESPERAR
+  44FF 7F 00 30            CLR  ERR1
+  4502 7F 00 31            CLR  ERR2
+  4505 7F 00 32            CLR  ERR3
+  4508 7F 00 33            CLR  ERR4
+  450B 7F 00 34            CLR  ERR5
+  450E 7F 00 35            CLR  ERR6
+  4511 7F 00 36            CLR  ERR7
+  4514 7F 00 37            CLR  ERR8
+  4517 39                  RTS
 
                    **************************************************
                    * SUBRUTINA  DE CONFIGURACION PUERTO SERIAL      *
                    **************************************************
                    SERIAL
-  4400 CC 30 2C        LDD   #$302C  * CONFIGURA PUERTO SERIAL
-  4403 B7 10 2B        STAA  BAUD    * BAUD  9600  para cristal de 8MHz
-  4406 F7 10 2D        STAB  SCCR2   * HABILITA  RX Y TX PERO INTERRUPCN SOLO RX
-  4409 86 00           LDAA  #$00
-  440B B7 10 2C        STAA  SCCR1   * 8 BITS
+  4518 CC 30 2C        LDD   #$302C  * CONFIGURA PUERTO SERIAL
+  451B B7 10 2B        STAA  BAUD    * BAUD  9600  para cristal de 8MHz
+  451E F7 10 2D        STAB  SCCR2   * HABILITA  RX Y TX PERO INTERRUPCN SOLO RX
+  4521 86 00           LDAA  #$00
+  4523 B7 10 2C        STAA  SCCR1   * 8 BITS
 
-  440E 86 FE           LDAA  #$FE    * CONFIG PUERTO D COMO SALIDAS (EXCEPTO
+  4526 86 FE           LDAA  #$FE    * CONFIG PUERTO D COMO SALIDAS (EXCEPTO
 .                  PD0)
-  4410 B7 10 09        STAA  DDRD    * SEA  ENABLE DEL DISPLAY  PD4  Y RS PD3
+  4528 B7 10 09        STAA  DDRD    * SEA  ENABLE DEL DISPLAY  PD4  Y RS PD3
 
-  4413 86 04           LDAA  #$04
-  4415 B7 10 3C        STAA  HPRIO
+  452B 86 04           LDAA  #$04
+  452D B7 10 3C        STAA  HPRIO
 
-  4418 86 00           LDAA  #$00
-  441A 06              TAP
-  441B 39              RTS
+  4530 86 00           LDAA  #$00
+  4532 06              TAP
+  4533 39              RTS
                    ***********************************
                    * ATENCION A INTERRUPCION SERIAL
                    ***********************************
@@ -728,6 +869,8 @@
 .                  INFROAMCI? DEL TICKET, AL ESTAR AL FINAL NO TIENE EL PROBLEMA
 .                  DE IMPRIMIR LOS OPCODES
                    ********
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      14
+
                            ORG   $0040
   0040 54 49 43 4B MSG1    FCC   'TICKET'
 . 0044 45 54
@@ -735,8 +878,6 @@
   0050 2D 2D 2D 2D MSG2    FCC   '----------------'
 . 0054 2D 2D 2D 2D
 . 0058 2D 2D 2D 2D
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      12
-
 . 005C 2D 2D 2D 2D
                            ORG   $0100
   0100 2D 2D 2D 2D MSG3    FCC   '----------------'
@@ -763,38 +904,40 @@
   HCM                0275
   CUATROCIENTOS      4074
   TRES               4023
+  MITAD_PRECIO_I     441C
+  MITAD_PRECIO_J     445E
   CT                 0015
-  MODIFICAR_A        4243
-  MODIFICAR_B        424E
-  MODIFICAR_C        4259
-  MODIFICAR_D        4264
-  MODIFICAR_E        426F
+  MODIFICAR_A        426D
+  MODIFICAR_B        4278
+  MODIFICAR_C        4283
+  MODIFICAR_D        428E
+  MODIFICAR_E        4299
   CIENTO             4099
-  MODIFICAR_F        427A
+  MODIFICAR_F        42A4
   DC                 0234
-  MODIFICAR_G        4285
-  SERIAL             4400
-  MODIFICAR_H        4290
-  MODIFICAR_I        429B
+  MODIFICAR_G        42AF
+  SERIAL             4518
+  MODIFICAR_H        42BA
+  MODIFICAR_I        42C5
   HDM                0274
-  MODIFICAR_J        42A6
+  MODIFICAR_J        42D0
   OPTION             1039
-  PROMOCION_2        43C0
   OCHOCIENTOS        4045
   NUEVE              4000
-  PROMOCION_3        43C0
   UT                 0017
   EUM                0245
   MILLONES           4030
   SETECIENTOS        4051
   DT                 0016
-  ERROR              43C0
+  ERROR              44D8
   EDM                0246
   EC                 0244
   BUM                0216
-  PUENTE_ENCICLATE   4240
+  PUENTE_ENCICLATE   426A
   QUINIENTOS         4069
   SIETE              400B
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      15
+
   A                  0202
   B                  0212
   C                  0222
@@ -802,28 +945,27 @@
   E                  0242
   F                  0252
   LIMPIAR            4113
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      13
-
   G                  0262
   H                  0272
   I                  0282
   J                  0292
-  PROMOCION_1_10     43B5
+  PROMOCION_1_10     449F
   DMIT               0010
-  RESTAR             422A
+  RESTAR             4254
   DIR_BASE           0060
   CSCTL              105D
   PACTL              1026
-  PUENTE_F           4231
-  PUENTE_G           4234
-  PUENTE_H           4237
-  PUENTE_I           423A
+  PUENTE_F           425B
+  PUENTE_G           425E
+  PUENTE_H           4261
+  PUENTE_I           4264
   IDMI               0287
-  PUENTE_J           423D
+  PUENTE_J           4267
+  SEPARAR_UNIDADES   4478
   TMSK2              1024
   SCCR1              102C
   SCCR2              102D
-  PUENTE_LIMPIAR     420A
+  PUENTE_LIMPIAR     4234
   C10                000A
   HUMI               0276
   DMT                0013
@@ -832,97 +974,104 @@
   BAUD               102B
   CIEN               40A0
   CINCO              4016
-  OFERTA_1_10        43A7
-  CICLO              41D1
+  OFERTA_1_10        4491
+  CICLO              41FB
   DOSCIENTOS         408E
-  AGREGAR_A          42B4
-  AGREGAR_B          42BD
-  AGREGAR_C          42C6
-  AGREGAR_D          42CF
+  SUMAR_PRECIOS_I    442D
+  SUMAR_PRECIOS_J    446F
+  AGREGAR_A          42DE
+  AGREGAR_B          42E7
+  AGREGAR_C          42F0
+  AGREGAR_D          42F9
   FCM                0256
-  AGREGAR_E          42D8
-  AGREGAR_F          42E1
+  AGREGAR_E          4302
+  AGREGAR_F          430B
   NOVECIENTOS        4039
   VAR                0001
-  AGREGAR_G          42EA
+  AGREGAR_G          4314
   ADCTL              1030
-  AGREGAR_H          42F3
-  AGREGAR_I          42FC
-  AGREGAR_J          4305
+  AGREGAR_H          431D
+  AGREGAR_I          4326
+  AGREGAR_J          432F
   IDM                0284
   ARTT               0300
   FUM                0254
   CINCUENTA          40C5
-  PROMOCION_1_50     439C
-  QUITAR_SIGNO       421C
+  PROMOCION_1_50     4486
+  QUITAR_SIGNO       4246
   TFLG2              1025
   PESOS              4107
   FDM                0255
   DOS                4028
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      16
+
   CUM                0226
   Y_CINCO            40FF
   OPT2               1038
   SIGNO              0002
-  QUITAR_A           430B
-  QUITAR_B           4313
-  QUITAR_C           431B
-  QUITAR_D           4323
-  QUITAR_E           432B
-  QUITAR_F           4333
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      14
-
-  QUITAR_G           433B
-  QUITAR_H           4343
-  QUITAR_I           434B
-  QUITAR_J           4353
-  ESPERAR            43E1
+  CALCULAR_I         43FA
+  QUITAR_A           4335
+  CALCULAR_J         443C
+  QUITAR_B           433D
+  QUITAR_C           4345
+  QUITAR_D           434D
+  QUITAR_E           4355
+  QUITAR_F           435D
+  QUITAR_G           4365
+  QUITAR_H           436D
+  QUITAR_I           4375
+  QUITAR_J           437D
+  PROMOCION_2_10     44D0
+  ESPERAR            44F9
   C50                0032
-  CAMBIAR_SIGNO      420D
+  CAMBIAR_SIGNO      4237
   ERR1               0030
   ERR2               0031
   RESET              FFFE
   ERR3               0032
   ERR4               0033
-  ENCICLATE          41CB
+  ENCICLATE          41F5
   ERR5               0034
-  OFERTA_1_50        438E
+  OFERTA_1_50        4478
   TREINTA            40D8
   ERR6               0035
   JDMI               0296
   ERR7               0036
   TRESCIENTOS        4082
   ERR8               0037
-  ERROR_A            42B1
-  ERROR_B            42BA
-  ERROR_C            42C3
-  ERROR_D            42CC
-  ERROR_E            42D5
-  ERROR_F            42DE
-  ERROR_G            42E7
+  ERROR_A            42DB
+  ERROR_B            42E4
+  ERROR_C            42ED
+  ERROR_D            42F6
+  ERROR_E            42FF
+  ERROR_F            4308
+  ERROR_G            4311
   VEINTICINCO        40EC
-  ERROR_H            42F0
-  ERROR_I            42F9
-  ERROR_J            4302
+  ERROR_H            431A
+  ERROR_I            4323
+  ERROR_J            432C
   ORDEN              0000
   JCM                0294
   HPRIO              103C
   IUMI               0286
+  OFERTA_2_10        44C1
   GCM                0266
   OCHO               4006
   SCSR               102E
   DIEZ               40E7
-  LIMPIAR_ERROR      43E1
+  LIMPIAR_ERROR      44F9
   GUM                0264
-  OFERTA_2           43C0
-  OFERTA_3           43C0
   ADR1               1031
   ADR2               1032
   ADR3               1033
   ADR4               1034
-  SUMAR              4223
+  SUMAR              424D
   GDM                0265
+  PROMOCION_2_50     44B9
   UMT                0014
   DUM                0235
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      17
+
   PORTA              1000
   SEIS               4011
   NOVENTA            40A5
@@ -936,17 +1085,16 @@
   DDRA               1001
   OCHENTA            40AD
   DDRD               1009
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      15
-
   DDRG               1003
   DIR_IMP            007B
   SCDR               102F
-  CALCULAR           435B
+  CALCULAR           4385
   VEINTE             40E0
   AC                 0206
   AD                 0205
   PACNT              1027
   SESENTA            40BD
+  OFERTA_2_50        44AA
   AU                 0204
   SPCR               1028
   BC                 0215

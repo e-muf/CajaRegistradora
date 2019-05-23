@@ -699,37 +699,37 @@
   447B 1A 83 00 00         CPD #0
   447F 27 07               BEQ SEPARAR_B
   4481 18 CE 02 04         LDY #AC
-  4485 7E 45 7D            JMP BINBCD_100
+  4485 BD 45 7D            JSR BINBCD_100
                    SEPARAR_B
   4488 FC 02 17            LDD TB
   448B 1A 83 00 00         CPD #0
   448F 27 07               BEQ SEPARAR_C
   4491 18 CE 02 14         LDY #BUM
-  4495 7E 45 7D            JMP BINBCD_100
+  4495 BD 45 7D            JSR BINBCD_100
                    SEPARAR_C
   4498 FC 02 27            LDD TC
   449B 1A 83 00 00         CPD #0
   449F 27 07               BEQ SEPARAR_D
   44A1 18 CE 02 24         LDY #CUM
-  44A5 7E 45 7D            JMP BINBCD_100
+  44A5 BD 45 7D            JSR BINBCD_100
                    SEPARAR_D
   44A8 FC 02 37            LDD TD
   44AB 1A 83 00 00         CPD #0
   44AF 27 07               BEQ SEPARAR_E
   44B1 18 CE 02 34         LDY #DDM
-  44B5 7E 45 7D            JMP BINBCD_100
+  44B5 BD 45 7D            JSR BINBCD_100
                    SEPARAR_E
   44B8 FC 02 47            LDD TE
   44BB 1A 83 00 00         CPD #0
   44BF 27 07               BEQ SEPARAR_F
   44C1 18 CE 02 44         LDY #EDM
-  44C5 7E 45 7D            JMP BINBCD_100
+  44C5 BD 45 7D            JSR BINBCD_100
                    SEPARAR_F
   44C8 FC 02 57            LDD TF
   44CB 1A 83 00 00         CPD #0
   44CF 27 07               BEQ SEPARAR_G
   44D1 18 CE 02 54         LDY #FCM
-  44D5 7E 45 7D            JMP BINBCD_100
+  44D5 BD 45 7D            JSR BINBCD_100
                    SEPARAR_G
   44D8 FC 02 67            LDD TG
   44DB 1A 83 00 00         CPD #0
@@ -737,23 +737,26 @@
   44E1 18 CE 02 64         LDY #GCM
   ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      12
 
-  44E5 7E 45 7D            JMP BINBCD_100
+  44E5 BD 45 7D            JSR BINBCD_100
                    SEPARAR_H
   44E8 FC 02 77            LDD TH
   44EB 1A 83 00 00         CPD #0
   44EF 27 07               BEQ SEPARAR_I
   44F1 18 CE 02 74         LDY #HUMI
-  44F5 7E 45 7D            JMP BINBCD_100
+  44F5 BD 45 7D            JSR BINBCD_100
                    SEPARAR_I
   44F8 FC 02 88            LDD TI
   44FB 1A 83 00 00         CPD #0
   44FF 27 07               BEQ SEPARAR_J
   4501 18 CE 02 84         LDY #IDMI
-  4505 7E 45 72            JMP BINBCD_1000
+  4505 BD 45 72            JSR BINBCD_1000
                    SEPARAR_J
   4508 FC 02 97            LDD TJ
   450B 18 CE 02 94         LDY #JDMI
-  450F 7E 45 7D            JMP BINBCD_100
+  450F BD 45 7D            JSR BINBCD_100
+
+                   **** ANDY PUEDES HACER SUBRUTINAS O AGREGAR EL CODIGO APARTIR
+.                  DE AQUI ABAJO, SUERTE!
 
 
                    **************************************************
@@ -799,11 +802,11 @@
   4542 02                  IDIV
   4543 39                  RTS
 
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      13
+
                    OFERTA_2_50
   4544 5A                  DECB
   4545 5A                  DECB
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      13
-
   4546 5A                  DECB
   4547 5A                  DECB
   4548 5A                  DECB
@@ -840,7 +843,7 @@
   4571 39                  RTS
 
                    **************************************************
-                   *      SUBRUTINA PARA SEPARARLO EN UNIDADES      *
+                   *       SUBRUTINA PARA SEPARAR EN UNIDADES       *
                    **************************************************
 
                    BINBCD_1000
@@ -866,11 +869,11 @@
   4593 18 E7 00            STAB  $00,Y
   4596 39                  RTS
 
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      14
+
                    **************************************************
                    *              SUBRUTINA DE ERROR                *
                    **************************************************
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      14
-
                    ERROR
   4597 86 5B               LDAA  #'[
   4599 97 30               STAA  ERR1
@@ -933,10 +936,10 @@
   F100 B6 10 2E        LDAA SCSR
   F103 B6 10 2F        LDAA SCDR
   F106 97 00           STAA ORDEN
+  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      15
+
   F108 7A 00 01        DEC  VAR
   F10B 3B              RTI
-
-  ADDR B1 B2 B3 B4 D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      15
 
                    ***********************************
                    * VECTOR INTERRUPCION SERIAL
@@ -1000,11 +1003,11 @@
   MODIFICAR_D        428E
   SEPARAR_B          4488
   MODIFICAR_E        4299
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      16
+
   CIENTO             4099
   SEPARAR_C          4498
   MODIFICAR_F        42A4
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      16
-
   DC                 0236
   SEPARAR_D          44A8
   MODIFICAR_G        42AF
@@ -1067,11 +1070,11 @@
   HUMI               0274
   DMT                0013
   ICM                0286
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      17
+
   SEISCIENTOS        405D
   BAUD               102B
   CIEN               40A0
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      17
-
   CINCO              4016
   OFERTA_1_10        452B
   CICLO              41FB
@@ -1134,11 +1137,11 @@
   ERR6               0035
   JDMI               0294
   ERR7               0036
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      18
+
   TRESCIENTOS        4082
   ERR8               0037
   ERROR_A            42DB
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      18
-
   ERROR_B            42E4
   ERROR_C            42ED
   ERROR_D            42F6
@@ -1201,11 +1204,11 @@
   BCD1               0060
   BCD2               0061
   INICIO             410D
+  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      19
+
   BCD3               0062
   TA                 0207
   TB                 0217
-  Symbol Table     D:\Downloads\CajaRegistradora\CajaRegistradora.  PAGE      19
-
   TC                 0227
   TD                 0237
   TE                 0247
